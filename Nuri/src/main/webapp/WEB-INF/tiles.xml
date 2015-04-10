@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="base" templateExpression="/WEB-INF/tiles/template/maintemplate.jsp">
+		<put-attribute name="meta" expression="/WEB-INF/tiles/common/meta.jsp" />
+		<put-attribute name="footer" expression="/WEB-INF/tiles/common/footer.jsp" />
+	</definition>
+	
+	<definition name="login" templateExpression="/WEB-INF/tiles/template/introTemplate.jsp" extends="base">
+		<put-attribute name="meta" expression="/WEB-INF/tiles/common/meta.jsp" />
+		<put-attribute name="body" expression="/WEB-INF/views/login.jsp" />
+	</definition>
+	
+	<definition name="*" templateExpression="/WEB-INF/tiles/template/mainTemplate.jsp" extends="base">
+		<put-attribute name="meta" expression="/WEB-INF/tiles/common/meta.jsp" />
+		<put-attribute name="header" expression="/WEB-INF/tiles/common/header.jsp" />
+		<put-attribute name="body" expression="/WEB-INF/views/{1}.jsp" />
+		<put-attribute name="topSider" expression="/WEB-INF/tiles/common/topSider.jsp" />
+		<put-attribute name="leftSider" expression="/WEB-INF/tiles/common/leftSider.jsp" />
+		<put-attribute name="rightSider" expression="/WEB-INF/tiles/common/rightSider.jsp" />
+		<put-attribute name="bottomSider" expression="/WEB-INF/tiles/common/bottomSider.jsp" />
+	</definition>
+	<!-- 
+	<definition name="*/*" templateExpression="/WEB-INF/tiles/front/template.jsp" extends="base">
+		<put-attribute name="meta" expression="/WEB-INF/tiles/front/meta.jsp" />
+		<put-attribute name="header" expression="/WEB-INF/tiles/front/header.jsp" />
+		<put-attribute name="body" expression="/WEB-INF/views/{1}.jsp" />
+		<put-attribute name="footer" expression="/WEB-INF/tiles/front/footer.jsp" />
+	</definition>
+	
+	<definition name="*/*/*" templateExpression="/WEB-INF/tiles/front/template.jsp" extends="base">
+		<put-attribute name="meta" expression="/WEB-INF/tiles/front/meta.jsp" />
+		<put-attribute name="header" expression="/WEB-INF/tiles/front/header.jsp" />
+		<put-attribute name="body" expression="/WEB-INF/views/{1}.jsp" />
+		<put-attribute name="footer" expression="/WEB-INF/tiles/front/footer.jsp" />
+	</definition>
+	
+	<definition name="etc" templateExpression="/" extends="base">
+		<put-attribute name="header" expression="/WEB-INF/views/front/template/inc/header.jsp" />
+		<put-attribute name="body" expression="/WEB-INF/views/front/template/inc/container.jsp" />
+	</definition>
+	 -->
+</tiles-definitions>

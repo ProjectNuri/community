@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+body {
+	padding-top:70px;
+	padding-bottom:70px;
+	font-size: 12px;
+	font-family: '나눔고딕', '맑은 고딕';
+}
+
+#sidebar-left {
+	height: 100%;
+	padding: 0;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1040;
+	/* display:none; */
+}
+
+#sidebar-right {
+	height: 100%;
+	padding: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: 1040;
+	/* display:none; */
+}
+
+table tr, table th {
+	text-align: center;
+}
