@@ -26,7 +26,7 @@ public class LoginService implements UserDetailsService {
 			if(user != null) {
 				userDetails = new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), true, true, true, true, getAuthorities());
 			}
-		} catch (UsernameNotFoundException e){
+		} catch (UsernameNotFoundException e){ 
 			throw e;
 		} catch (Exception e) {
 			e.printStackTrace();

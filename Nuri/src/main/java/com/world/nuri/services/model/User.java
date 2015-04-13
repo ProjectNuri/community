@@ -10,7 +10,7 @@ public class User extends GenericModel {
 	private static final long serialVersionUID = 1L;
 	
 	private String password;
-	private String nickname;
+	private String nickName;
 	private String email;
 	private String phone;
 	
@@ -20,11 +20,11 @@ public class User extends GenericModel {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getNickname() {
-		return nickname;
+	public String getNickName() {
+		return nickName;
 	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 	public String getEmail() {
 		return email;
