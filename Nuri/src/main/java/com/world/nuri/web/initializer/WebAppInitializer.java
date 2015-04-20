@@ -14,6 +14,7 @@ import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatche
 
 import com.world.nuri.services.config.ServicesConfiguration;
 import com.world.nuri.web.config.WebAppConfiguration;
+import com.world.nuri.web.config.WebSecurityConfiguration;
 
 @Order(1)
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -22,7 +23,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 	
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		return new Class<?>[] { ServicesConfiguration.class/*, WebSecurityConfiguration.class, WebSocketConfiguration.class*/ };
+		return new Class<?>[] { ServicesConfiguration.class, WebSecurityConfiguration.class/*, WebSocketConfiguration.class*/ };
 	}
 
 	@Override

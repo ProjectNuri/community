@@ -25,12 +25,14 @@ public abstract class GenericService<T> {
 	
 	public T get(Integer id) {
 		String where = " WHERE id=:id";
-		return (T)em.createNativeQuery(SELECT_ALL_SQL + where, clazz).setParameter("id", id).getSingleResult();
+		List<T> list = em.createNativeQuery(SELECT_ALL_SQL + where, clazz).setParameter("id", id).getResultList();
+		return (list.isEmpty())?null:list.get(0);
 	}
 	
 	public T getByKey(String keyName, String key) {
 		String where = " WHERE " + keyName + "=:key";
-		return (T)em.createNativeQuery(SELECT_ALL_SQL + where, clazz).setParameter("key", key).getSingleResult();
+		List<T> list = em.createNativeQuery(SELECT_ALL_SQL + where, clazz).setParameter("key", key).getResultList();
+		return (list.isEmpty())?null:list.get(0);
 	}
 	
 	public List<T> gets() {

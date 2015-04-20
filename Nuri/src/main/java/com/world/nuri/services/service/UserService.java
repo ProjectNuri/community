@@ -17,7 +17,13 @@ public class UserService extends GenericService<User> {
 	public User loginUser(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		SecurityContext securityContext = (SecurityContext) session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
-		String name = securityContext.getAuthentication().getName();
-		return this.getByKey("name", name);
+		String name = null;
+		User user = null;
+		if(securityContext != null) {
+			name = securityContext.getAuthentication().getName();
+			user = this.getByKey("name", name);
+		}
+		
+		return user;
 	}
 }

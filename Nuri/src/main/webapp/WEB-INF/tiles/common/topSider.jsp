@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" session="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <div id="sidebar-top" class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -27,21 +26,19 @@
                 	<a href="/board">Boards</a>
                 </li>
                 <c:forEach items="${menus}" var="menu">
-                	<c:choose>
-		                <c:when test="${fn:length(menu.childs) > 0}">
-		                	<li class="dropdown">
-		                		<a href="${menu.link}" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">${menu.name} <span class="caret"></span></a>
-		                		<ul class="dropdown-menu" role="menu">
-		                		<c:forEach items="${menu.childs}" var="submenu">
-			                		<li><a href="${submenu.link}">${submenu.name}</a></li>
-		                		</c:forEach>
-		                		</ul>
-		                	</li>
-		                </c:when>
-		                <c:otherwise>
-		                	<li><a href="${menu.link}">${menu.name}</a></li>
-		                </c:otherwise>
-	                </c:choose>
+	                <c:if test="${not empty menu.childs}">
+	                	<li class="dropdown">
+	                		<a href="${menu.link}" data-toggle="dropdown" class="dropdown-toggle" data-hover="dropdown">${menu.name} <span class="caret"></span></a>
+	                		<ul class="dropdown-menu" role="menu">
+	                		<c:forEach items="${menu.childs}" var="submenu">
+		                		<li><a href="${submenu.link}">${submenu.name}</a></li>
+	                		</c:forEach>
+	                		</ul>
+	                	</li>
+	                </c:if>
+	                <c:if test="${empty menu.childs}">
+	                	<li><a href="${menu.link}">${menu.name}</a></li>
+	                </c:if>
 				</c:forEach>
             </ul>
             <form class="navbar-form navbar-left" role="search">

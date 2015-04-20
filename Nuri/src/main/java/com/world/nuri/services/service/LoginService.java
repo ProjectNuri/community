@@ -2,6 +2,7 @@ package com.world.nuri.services.service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,8 +23,13 @@ public class LoginService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserDetails userDetails = null;
 		try {
+			List<User> users = userService.gets();
+			for(User user : users) System.out.println(user.getName());
+			System.out.println("input:"+username);
 			User user = userService.getByKey("name", username);
 			if(user != null) {
+				System.out.println(user.getName());
+				System.out.println(user.getPassword());
 				userDetails = new org.springframework.security.core.userdetails.User(user.getName(), user.getPassword(), true, true, true, true, getAuthorities());
 			}
 		} catch (UsernameNotFoundException e){ 
@@ -36,9 +42,7 @@ public class LoginService implements UserDetailsService {
 	
 	public Collection<GrantedAuthority> getAuthorities() {
 		Collection<GrantedAuthority> authList = new ArrayList<GrantedAuthority>();
-		
 		authList.add(new SimpleGrantedAuthority("ROLE_USER"));
-		
 		return authList;
 	}
 
