@@ -1,7 +1,11 @@
 package com.world.nuri.services.service;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
 
 import com.world.nuri.services.model.User;
@@ -10,4 +14,10 @@ import com.world.nuri.services.model.User;
 @Transactional
 public class UserService extends GenericService<User> {
 	
+	public User loginUser(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		SecurityContext securityContext = (SecurityContext) session.getAttribute(HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY);
+		String name = securityContext.getAuthentication().getName();
+		return this.getByKey("name", name);
+	}
 }

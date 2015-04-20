@@ -1,11 +1,15 @@
 package com.world.nuri.web.config;
 
+import java.util.List;
+
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -26,7 +30,7 @@ import com.world.nuri.services.config.ServicesConfiguration;
 @Configuration
 @EnableWebMvc
 @Import(ServicesConfiguration.class)
-@ComponentScan(basePackages={"com.world.nuri.web.controller.view", "com.world.nuri.services.model"})
+@ComponentScan(basePackages={"com.world.nuri.web.controller", "com.world.nuri.services.model"})
 //@EnableHypermediaSupport(type = { null })
 public class WebAppConfiguration extends WebMvcConfigurerAdapter {
 	
@@ -85,4 +89,9 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter {
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
+    
+    @Override
+	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+    	converters.add(new MappingJackson2HttpMessageConverter());
+	}
 }
