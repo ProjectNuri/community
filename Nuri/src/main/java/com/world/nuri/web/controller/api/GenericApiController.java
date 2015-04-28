@@ -44,7 +44,7 @@ public abstract class GenericApiController<T> {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public Integer delte(@PathVariable Integer id) {
 		return genericService.delete(id);
 	}

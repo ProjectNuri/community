@@ -40,7 +40,7 @@ public class LocalDataSourceConfiguration   {
 
     @Primary
     @Bean(name = "localEntityManager")
-    @PersistenceUnit(name = "localEntityManagerUnit")
+//    @PersistenceUnit(name = "localEntityManagerUnit")
     public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean( DataSource dataSource  ) throws Exception {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setPersistenceUnitName("localEntityManagerUnit");
