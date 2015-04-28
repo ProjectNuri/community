@@ -38,8 +38,14 @@ public abstract class GenericApiController<T> {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/get", method = RequestMethod.POST)
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public T update(@PathVariable Integer id, @RequestBody T entity) {
 		return genericService.update(entity);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public Integer delte(@PathVariable Integer id) {
+		return genericService.delete(id);
 	}
 }
