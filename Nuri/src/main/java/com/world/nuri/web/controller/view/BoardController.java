@@ -35,7 +35,7 @@ public class BoardController {
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String board(@PathVariable Integer id, HttpServletRequest request, Model model) {
-		List<Content> contents = contentService.getsByParent(id, Board.class.getName());
+		List<Content> contents = contentService.listByParent(id, Board.class.getName());
 		model.addAttribute(Content.class.getName() + "s", contents);
 		return "board2";
 	}

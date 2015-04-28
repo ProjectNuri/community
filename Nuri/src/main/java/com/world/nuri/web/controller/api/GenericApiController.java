@@ -26,14 +26,14 @@ public abstract class GenericApiController<T> {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/gets", method = RequestMethod.GET)
-	public List<T> gets() {
-		return genericService.gets();
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public List<T> list() {
+		return genericService.list();
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/gets/{keyword}", method = RequestMethod.GET)
-	public List<T> gets(@RequestParam String keyword, @RequestParam String[] keys) {
+	@RequestMapping(value = "/list/{keyword}", method = RequestMethod.GET)
+	public List<T> list(@RequestParam String keyword, @RequestParam String[] keys) {
 		return genericService.search(keyword, keys);
 	}
 	
@@ -45,7 +45,7 @@ public abstract class GenericApiController<T> {
 	
 	@ResponseBody
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public Integer delte(@PathVariable Integer id) {
+	public Integer delete(@PathVariable Integer id) {
 		return genericService.delete(id);
 	}
 }

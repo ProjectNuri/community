@@ -39,8 +39,8 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		model.addAttribute("boards", boardService.gets());
-		model.addAttribute("menus", menuService.getsByParent(null, "parent"));
+		model.addAttribute("boards", boardService.list());
+		model.addAttribute("menus", menuService.listByParent(null, "parent"));
 		model.addAttribute("user", userService.loginUser(request));
 //		model.addAttribute("menus", menuService.gets());
 		

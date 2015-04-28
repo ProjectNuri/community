@@ -23,7 +23,7 @@ public class LoginService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserDetails userDetails = null;
 		try {
-			List<User> users = userService.gets();
+			List<User> users = userService.list();
 			for(User user : users) System.out.println(user.getName());
 			System.out.println("input:"+username);
 			User user = userService.getByKey("name", username);

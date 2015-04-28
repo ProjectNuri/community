@@ -35,16 +35,16 @@ public abstract class GenericService<T> {
 		return (list.isEmpty())?null:list.get(0);
 	}
 	
-	public List<T> gets() {
+	public List<T> list() {
 		return em.createNativeQuery(SELECT_ALL_SQL, clazz).getResultList();
 	}
 	
-	public List<T> getsByKey(String keyName, String key) {
+	public List<T> listByKey(String keyName, String key) {
 		String where = " WHERE " + keyName + "=:key";
 		return em.createNativeQuery(SELECT_ALL_SQL + where, clazz).setParameter("key", key).getResultList();
 	}
 	
-	public List<T> getsByParent(Integer parentId, String parentName) {
+	public List<T> listByParent(Integer parentId, String parentName) {
 		String columnName = parentName + "Id";
 		if(parentId != null) {
 			String where = " WHERE " + columnName + "=:" + columnName;
