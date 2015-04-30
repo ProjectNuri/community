@@ -70,7 +70,7 @@ public abstract class GenericService<T> {
 	public T update(T entity) {
 		return em.merge(entity);
 	}
-	
+	 
 	public long count() {
 		return em.createNamedQuery(SELECT_COUNT_SQL, Long.class).getSingleResult();
 	}
