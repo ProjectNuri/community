@@ -22,7 +22,7 @@ import com.world.nuri.services.service.UserService;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class HomeController extends GenericViewController<Object> {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired private BoardService boardService;

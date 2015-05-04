@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import com.world.nuri.services.service.LoginService;
 import com.world.nuri.web.security.LoginFailureHandler;
 import com.world.nuri.web.security.LoginSuccessHandler;
+import com.world.nuri.web.security.LogoutSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -71,6 +72,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.logout()
 				.logoutUrl("/logout")
 				.logoutSuccessUrl("/?logout")
+				.logoutSuccessHandler(new LogoutSuccessHandler())
 				.and()
 			.rememberMe()
 				.and()

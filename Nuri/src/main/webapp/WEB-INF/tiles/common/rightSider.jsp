@@ -6,56 +6,25 @@ $(document).ready(function(){
 		event.preventDefault();
 		console.log($(this).serialize());
 	});
-	
-	$("button[name='loginButton']").click(function(){
-		login();
-	});
-	
 });
-function login() {
-	var data = $("form.form-signin").serialize();
-	var cb = function(data) {
-		alert(JSON.stringify(data));
-	};
-	/* data = JSON.stringify(data); */
-	$.ajax({
-	    type:'POST',
-	    url:"/login",
-	    cache:false,
-	    data:data,
-	    success:cb,
-	    error: function (xhr, ajaxOptions, thrownError) {
-	    	if(xhr.status == 901) {
-	    		alert("로그인이 필요합니다.");
-	    		location.href = "/login";
-	    	} else {
-	    		alert('error trying to post to ' + u + '.\r' + xhr.status + "/" + thrownError);
-	    	}
-	    }
+function login(formName) {
+	ajax.submit(formName, function(data) {
+		data = JSON.parse(data);
+		if(data.success) {
+			alert("로그인에 성공했습니다.");
+			$("#sidebar-right").load("/template/right");
+		}
+		else alert("로그인에 실패했습니다.");
 	});
+	return ;
 }
 function logout() {
-	var u = "/logout";
-	var data = {};
-	var cb = function(data) {
-		alert(JSON.stringify(data));
-	};
-	$.ajax({
-	    type:'POST',
-	    url:u,
-	    cache:false,
-	    dataType:'json',
-	    data:data,
-	    contentType:'application/json; charset=utf-8',
-	    success:cb,
-	    error: function (xhr, ajaxOptions, thrownError) {
-	    	if(xhr.status == 901) {
-	    		alert("로그인이 필요합니다.");
-	    		location.href = "/login";
-	    	} else {
-	    		alert('error trying to post to ' + u + '.\r' + xhr.status + "/" + thrownError);
-	    	}
-	    }
+	ajax.get("/logout", {}, function(data) {
+		if(data.success) {
+			alert("로그아웃에 성공했습니다.");
+			$("#sidebar-right").load("/template/right");
+		}
+		else alert("로그아웃에 실패했습니다.");
 	});
 }
 </script>
@@ -76,7 +45,7 @@ function logout() {
      </div>
      <div class="row col-xs-offset-1">
      	<c:if test="${empty user}">
-     		<form class="form-signin" action="/login" method="post">
+     		<form name="form-signin" action="/login" method="post" onsubmit="login(this.name);">
 	     	<div class="col-xs-7" style="padding-left:0px; padding-right:0px;">
 		     		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
 			     	<input type="text" name="username" class="form-control input-sm" placeholder="아이디" value="" required="required"/>
