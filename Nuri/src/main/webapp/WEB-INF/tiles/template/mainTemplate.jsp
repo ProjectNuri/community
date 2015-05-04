@@ -11,9 +11,7 @@
 <!-- footer start -->
 <tiles:insertAttribute name="topSider" />
 <tiles:insertAttribute name="leftSider" />
-<div id="rightSider1">
 <tiles:insertAttribute name="rightSider" />
-</div>
 <tiles:insertAttribute name="bottomSider" />
 </div><!-- body end -->
 </body>

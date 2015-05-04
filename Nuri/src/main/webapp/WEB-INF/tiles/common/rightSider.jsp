@@ -12,40 +12,41 @@ function login(formName) {
 		data = JSON.parse(data);
 		if(data.success) {
 			alert("로그인에 성공했습니다.");
-			$("#sidebar-right").load("/template/right");
+			$("#sidebar-right").load("/template/right div.inner");
 		}
 		else alert("로그인에 실패했습니다.");
 	});
-	return ;
+	return false;
 }
 function logout() {
 	ajax.get("/logout", {}, function(data) {
 		if(data.success) {
 			alert("로그아웃에 성공했습니다.");
-			$("#sidebar-right").load("/template/right");
+			$("#sidebar-right").load("/template/right div.inner");
 		}
 		else alert("로그아웃에 실패했습니다.");
 	});
 }
 </script>
 <div id="sidebar-right" class="navbar navbar-default" role="navigation">
-     <div class="navbar-header">
-     	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sidebar-right .navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-      </button>
-     </div>
-     <div class="collapse navbar-collapse">
-         <ul class="nav navbar-nav">
-             <li><a href="#">Home</a></li>
-             <li><a href="#">About</a></li>
-             <li><a href="#">Contact</a></li>
-         </ul>
-     </div>
-     <div class="row col-xs-offset-1">
-     	<c:if test="${empty user}">
-     		<form name="form-signin" action="/login" method="post" onsubmit="login(this.name);">
+	<div class="inner">
+	    <div class="navbar-header">
+	    	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sidebar-right .navbar-collapse">
+	         <span class="icon-bar"></span>
+	         <span class="icon-bar"></span>
+	         <span class="icon-bar"></span>
+	     </button>
+	    </div>
+	    <div class="collapse navbar-collapse">
+	        <ul class="nav navbar-nav">
+	            <li><a href="#">Home</a></li>
+	            <li><a href="#">About</a></li>
+	            <li><a href="#">Contact</a></li>
+	        </ul>
+	    </div>
+	    <div class="row col-xs-offset-1">
+	    	<c:if test="${empty user}">
+	    		<form name="form-signin" action="/login" method="post" onsubmit="return login(this.name);">
 	     	<div class="col-xs-7" style="padding-left:0px; padding-right:0px;">
 		     		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
 			     	<input type="text" name="username" class="form-control input-sm" placeholder="아이디" value="" required="required"/>
@@ -56,14 +57,15 @@ function logout() {
 	     		<button class="btn btn-sm btn-warning" type="submit"><strong>찾　기</strong></button>
 	     	</div>
 	     	</form>
-     	</c:if>
-     	<c:if test="${not empty user}">
-     		${user.name}<br/>
-     		${user.password}<br/>
-     		${user.nickname}<br/>
-     		${user.email}<br/>
-     		${user.phone}<br/>
-     		<button class="btn btn-sm btn-danger" type="submit" onclick="logout();"><strong>로그아웃</strong></button>
-     	</c:if>
-     </div>
+	    	</c:if>
+	    	<c:if test="${not empty user}">
+	    		${user.name}<br/>
+	    		${user.password}<br/>
+	    		${user.nickname}<br/>
+	    		${user.email}<br/>
+	    		${user.phone}<br/>
+	    		<button class="btn btn-sm btn-danger" type="submit" onclick="logout();"><strong>로그아웃</strong></button>
+	    	</c:if>
+	    </div>
+    </div>
 </div>
