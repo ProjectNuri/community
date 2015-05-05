@@ -5,23 +5,36 @@
 var ajax = {
 	error:function (xhr, ajaxOptions, thrownError) {
     	if(xhr.status == 901) {
-    		alert("로그인이 필요합니다.");
-    		location.href = "/login";
+    		alert("로그인이 필요합니다.");http://mainia.tistory.com/941
+    		location.href = "/";
     	} else {
-    		alert('error trying to post to ' + u + '.\r' + xhr.status + "/" + thrownError);
+    		alert('error trying.\r' + xhr.status + "/" + thrownError);
     	}
     },
-	submit:function(formName, cb) {
-		$form = $("form[name='"+formName+"']");
-		var data = $form.serialize();
+    toArrayForUrl:function(urlString) {
+    	var data = {};
+    	var keynvalues = urlString.split('&');
+    	for(var i in keynvalues) {
+    		var keynvalue = keynvalues[i].split('=');
+    		data[keynvalue[0]] = keynvalue[1];
+    	}
+    	return data;
+    },
+	submit:function(form, cb) {
+		$form = $(form);
+		var data = ajax.toArrayForUrl($form.serialize());
+		console.log(JSON.stringify(data));
 		var headers = {};
-		data['_method'] = $form.attr("method");
+//		data['_method'] = $form.attr("method");
+		data = JSON.stringify(data);
 		headers['_method'] = $form.attr("method");
 		$.ajax({
-		    type:'POST',
+		    type:$form.attr("method"),
 		    url:$form.attr("action"),
 		    cache:false,
 		    data:data,
+		    dataType:'json',
+		    contentType:'application/json; charset=utf-8',
 		    success:cb,
 		    error:ajax.error
 		});

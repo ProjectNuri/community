@@ -1,5 +1,8 @@
 package com.world.nuri.web.config;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.context.MessageSource;
@@ -8,6 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.multipart.MultipartResolver;
@@ -92,6 +96,11 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter {
     
     @Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
+    	MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
+    	List<MediaType> supportedMediaTypes = new ArrayList<MediaType>();
+    	supportedMediaTypes.add(new MediaType("application", "json", StandardCharsets.UTF_8));
+    	supportedMediaTypes.add(new MediaType("application", "x-www-form-urlencoded", StandardCharsets.UTF_8));
+    	mappingJackson2HttpMessageConverter.setSupportedMediaTypes(supportedMediaTypes);
     	converters.add(new MappingJackson2HttpMessageConverter());
 	}
 }

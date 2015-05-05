@@ -1,14 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" session="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script type="text/javascript">
-$(document).ready(function(){
-	$("form").on("submit", function(event) {
-		event.preventDefault();
-		console.log($(this).serialize());
-	});
-});
-function login(formName) {
-	ajax.submit(formName, function(data) {
+function login(form) {
+	console.log($(form).attr('action'));
+	ajax.post($(form).attr('action'), $(form).serialize(), function(data) {
 		data = JSON.parse(data);
 		if(data.success) {
 			alert("로그인에 성공했습니다.");
@@ -27,6 +22,19 @@ function logout() {
 		else alert("로그아웃에 실패했습니다.");
 	});
 }
+function join(form) {
+	ajax.submit(form, function(data) {
+		console.log(data);
+		if(data != null) {
+			alert("회원가입에 성공했습니다.");
+			$("#sidebar-right").load("/template/right div.inner");
+		}
+		else {
+			alert(data.mssege);
+		}
+	});
+	return false;
+}
 </script>
 <div id="sidebar-right" class="navbar navbar-default" role="navigation">
 	<div class="inner">
@@ -44,9 +52,9 @@ function logout() {
 	            <li><a href="#">Contact</a></li>
 	        </ul>
 	    </div>
+	    <c:if test="${empty user}">
 	    <div class="row col-xs-offset-1">
-	    	<c:if test="${empty user}">
-	    		<form name="form-signin" action="/login" method="post" onsubmit="return login(this.name);">
+	    	<form name="form-signin" action="/login" method="post" onsubmit="return login(this);">
 	     	<div class="col-xs-7" style="padding-left:0px; padding-right:0px;">
 		     		<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/> --%>
 			     	<input type="text" name="username" class="form-control input-sm" placeholder="아이디" value="" required="required"/>
@@ -54,18 +62,43 @@ function logout() {
 	     	</div>
 	     	<div class="col-xs-3">
 	     		<button class="btn btn-sm btn-primary" name="loginButton" type="submit"><strong>로그인</strong></button>
-	     		<button class="btn btn-sm btn-warning" type="submit"><strong>찾　기</strong></button>
+	     		<button class="btn btn-sm btn-warning" name="findButton" type="submit"><strong>찾　기</strong></button>
 	     	</div>
 	     	</form>
-	    	</c:if>
-	    	<c:if test="${not empty user}">
-	    		${user.name}<br/>
-	    		${user.password}<br/>
-	    		${user.nickname}<br/>
-	    		${user.email}<br/>
-	    		${user.phone}<br/>
-	    		<button class="btn btn-sm btn-danger" type="submit" onclick="logout();"><strong>로그아웃</strong></button>
-	    	</c:if>
 	    </div>
+	    <div class="row col-xs-offset-1">
+	    	<div class="col-xs-12">
+	    		<button class="btn btn-sm btn-info" name="joinButton" type="submit"><strong>회원가입</strong></button>
+	    	</div>
+	    </div>
+	    <div class="row col-xs-offset-1">
+	    	<form name="form-join" action="/api/user" method="put" onsubmit="return join(this)">
+	    	<div class="col-xs-7">
+	    		<!-- <input type="text" name="entity[name]" class="form-control input-sm" placeholder="아이디" value="" required="required"/>
+	    		<input type="password" name="entity[password]" class="form-control input-sm" placeholder="비밀번호" value="" required="required"/>
+	    		<input type="text" name="entity[nickname]" class="form-control input-sm" placeholder="이름" value="" required="required"/>
+	    		<input type="text" name="entity[email]" class="form-control input-sm" placeholder="이메일" value="" required="required"/>
+	    		<input type="text" name="entity[phone]" class="form-control input-sm" placeholder="전화번호" value="" required="required"/> -->
+	    		
+	    		<input type="text" name="name" class="form-control input-sm" placeholder="아이디" value="" required="required"/>
+	    		<input type="password" name="password" class="form-control input-sm" placeholder="비밀번호" value="" required="required"/>
+	    		<input type="text" name="nickname" class="form-control input-sm" placeholder="이름" value="" required="required"/>
+	    		<input type="text" name="email" class="form-control input-sm" placeholder="이메일" value="" required="required"/>
+	    		<input type="text" name="phone" class="form-control input-sm" placeholder="전화번호" value="" required="required"/>
+	    		<button class="btn btn-sm btn-danger" name="joinButton" type="submit"><strong>가입</strong></button>
+	    	</div>
+	    	</form>
+	    </div>
+	    </c:if>
+	    <c:if test="${not empty user}">
+	    <div class="row col-xs-offset-1">
+	    	${user.name}<br/>
+    		${user.password}<br/>
+    		${user.nickname}<br/>
+    		${user.email}<br/>
+    		${user.phone}<br/>
+    		<button class="btn btn-sm btn-danger" type="submit" onclick="logout();"><strong>로그아웃</strong></button>
+	    </div>
+    	</c:if>
     </div>
 </div>

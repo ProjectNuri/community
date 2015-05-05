@@ -1,10 +1,14 @@
 package com.world.nuri.services.service;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
+import com.world.nuri.services.model.abstractModel.GenericModel;
 
 public abstract class GenericService<T> {
 
@@ -17,8 +21,11 @@ public abstract class GenericService<T> {
 	private final String table = clazz.getSimpleName();
 	private String SELECT_ALL_SQL = "SELECT * FROM " + this.table;
 	private String SELECT_COUNT_SQL = "SELECT count(*) FROM " + this.table;
-
+	
+	@Transactional
 	public T add(T entity) {
+		((GenericModel)entity).setCreatedDate(new Date());
+		((GenericModel)entity).setModifiedDate(new Date());
 		em.persist(entity);
 		return entity;
 	}

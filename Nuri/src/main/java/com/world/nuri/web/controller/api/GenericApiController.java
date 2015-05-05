@@ -2,6 +2,8 @@ package com.world.nuri.web.controller.api;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,6 +37,12 @@ public abstract class GenericApiController<T> {
 	@RequestMapping(value = "/list/{keyword}", method = RequestMethod.GET)
 	public List<T> list(@RequestParam String keyword, @RequestParam String[] keys) {
 		return genericService.search(keyword, keys);
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "", method = RequestMethod.PUT)
+	public T add(@RequestBody T entity) {
+		return genericService.add(entity);
 	}
 	
 	@ResponseBody
