@@ -39,5 +39,9 @@ INSERT INTO Content(name, createdDate, modifiedDate, boardId, contents) VALUES (
 INSERT INTO Content(name, createdDate, modifiedDate, boardId, contents) VALUES ('가나다라', NOW(), NOW(), 4, '마바사아자차');
 INSERT INTO Content(name, createdDate, modifiedDate, boardId, contents) VALUES ('가나다라', NOW(), NOW(), 4, '마바사아자차');
 
+INSERT INTO Tag(name, createdDate, modifiedDate, contentId) VALUES ('컴퓨터', NOW(), NOW(), 1);
+
+INSERT INTO ContentTag(contentId, tagId) VALUES ();
+
 insert into User(name,password,nickname,email,phone,createdDate, modifiedDate) values('ehnawh','ghksgml','이환희','ehnawh@gmail.com','010-5246-3043',NOW(),NOW());
 insert into User(name,password,nickname,email,phone,createdDate, modifiedDate) values('hsw93','tjddnr','허성욱','hsw93@gmail.com','010-4310-4728 ',NOW(),NOW());
