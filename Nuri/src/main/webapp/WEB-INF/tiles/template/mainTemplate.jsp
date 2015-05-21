@@ -6,6 +6,7 @@
 </head>
 <body>
 <!-- body start -->
+<div id="transitionPanel" class="default"></div>
 <div class="container">
 <tiles:insertAttribute name="body" />
 <!-- footer start -->

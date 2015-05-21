@@ -30,18 +30,26 @@ public class BoardController {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String main(HttpServletRequest request, Model model) {
+		model.addAttribute(Content.class.getSimpleName() + "s", contentService.list());
 		return "board";
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String board(@PathVariable Integer id, HttpServletRequest request, Model model) {
 		List<Content> contents = contentService.listByParent(id, Board.class.getName());
-		model.addAttribute(Content.class.getName() + "s", contents);
+		model.addAttribute(Content.class.getSimpleName() + "s", contents);
 		return "board2";
 	}
 	
 	@RequestMapping(value = "/contents", method = RequestMethod.GET)
 	public String contents(HttpServletRequest request, Model model) {
+		model.addAttribute(Content.class.getSimpleName(), (Content)contentService.get(1));
 		return "board_contents";
+	}
+	
+	@RequestMapping(value = "/contents2", method = RequestMethod.GET)
+	public String contents2(HttpServletRequest request, Model model) {
+		model.addAttribute(Content.class.getSimpleName(), (Content)contentService.get(1));
+		return "board_contents2";
 	}
 }
