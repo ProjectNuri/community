@@ -83,6 +83,7 @@ public abstract class GenericService<T> {
 		return em.createNamedQuery(SELECT_COUNT_SQL, Long.class).getSingleResult();
 	}
 	
+	@Transactional
 	public Integer delete(Integer id) {
 		em.remove(this.get(id));
 		return id;

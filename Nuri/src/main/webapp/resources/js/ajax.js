@@ -16,14 +16,16 @@ var ajax = {
     	var keynvalues = urlString.split('&');
     	for(var i in keynvalues) {
     		var keynvalue = keynvalues[i].split('=');
-    		data[keynvalue[0]] = keynvalue[1];
+    		keynvalue[0] = decodeURIComponent(keynvalue[0]);
+    		keynvalue[1] = decodeURIComponent(keynvalue[1]);
+    		if(typeof keynvalue[0].split('Id')[1] != "undefined" && keynvalue[0].split('Id')[1] == "") data[keynvalue[0].split('Id')[0]] = {id:keynvalue[1]};
+    		else data[keynvalue[0]] = keynvalue[1];
     	}
     	return data;
     },
 	submit:function(form, cb) {
 		$form = $(form);
 		var data = ajax.toArrayForUrl($form.serialize());
-		console.log(JSON.stringify(data));
 		var headers = {};
 //		data['_method'] = $form.attr("method");
 		data = JSON.stringify(data);

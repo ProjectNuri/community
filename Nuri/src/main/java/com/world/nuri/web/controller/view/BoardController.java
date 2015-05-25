@@ -43,13 +43,13 @@ public class BoardController {
 	
 	@RequestMapping(value = "/contents", method = RequestMethod.GET)
 	public String contents(HttpServletRequest request, Model model) {
-		model.addAttribute(Content.class.getSimpleName(), (Content)contentService.get(1));
+		model.addAttribute(Content.class.getSimpleName(), contentService.get(1));
 		return "board_contents";
 	}
 	
 	@RequestMapping(value = "/contents2", method = RequestMethod.GET)
 	public String contents2(HttpServletRequest request, Model model) {
-		model.addAttribute(Content.class.getSimpleName(), (Content)contentService.get(1));
+		model.addAttribute(Content.class.getSimpleName(), contentService.get(1));
 		return "board_contents2";
 	}
 }

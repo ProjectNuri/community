@@ -11,10 +11,9 @@ import com.world.nuri.services.model.abstractModel.GenericModel;
 
 @Entity
 @AssociationOverrides({
-		@AssociationOverride(name = "pk.content", 
-			joinColumns = @JoinColumn(name = "contentId")),
-		@AssociationOverride(name = "pk.tag", 
-			joinColumns = @JoinColumn(name = "tagId")) })
+		@AssociationOverride(name = "pk.content", joinColumns = @JoinColumn(name = "contentId")),
+		@AssociationOverride(name = "pk.tag", joinColumns = @JoinColumn(name = "tagId"))
+})
 public class ContentTag extends GenericModel{
 	private static final long serialVersionUID = 1L;
 	
