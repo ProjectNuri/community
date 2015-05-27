@@ -1,16 +1,19 @@
 @CHARSET "UTF-8";
+
 * {
 	box-sizing: border-box;
 }
+
 * {
 	-webkit-tap-highlight-color: transparent;
 }
+
 body {
 	/* padding-top:70px;
 	padding-bottom:70px; */
 	font-size: 12px;
 	font-family: '나눔고딕', '맑은 고딕';
-	transition: background .1s cubic-bezier(0.22,.88,.01,.99);
+	transition: background .1s cubic-bezier(0.22, .88, .01, .99);
 	overflow: hidden;
 	width: 100%;
 	max-width: 100%;
@@ -20,19 +23,19 @@ body {
 }
 
 .container {
-	width:100%;
-	height:100%;
+	width: 100%;
+	height: 100%;
 	/* overflow-x: hidden;
 	overflow-y: scroll; */
 }
 
 #transitionPanel {
-	will-change: tranform,background-color;
-	transition-property: -webkit-transform,background-color;
-	transition-property: transform,background-color;
+	will-change: tranform, background-color;
+	transition-property: -webkit-transform, background-color;
+	transition-property: transform, background-color;
 	transition-duration: .5s;
-	transition-timing-function: cubic-bezier(0.22,.88,.01,.99);
-	transition-delay: 0s,1s;
+	transition-timing-function: cubic-bezier(0.22, .88, .01, .99);
+	transition-delay: 0s, 1s;
 	position: absolute;
 	z-index: 3000;
 	width: 100%;
@@ -69,6 +72,7 @@ body {
 #sidebar-top {
 	display: none;
 }
+
 #sidebar-bottom {
 	display: none;
 }

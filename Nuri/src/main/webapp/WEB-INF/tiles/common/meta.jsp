@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/normalize.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/lib/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/lib/bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/floatnav.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/jquery/jquery-2.1.0.min.js"></script>
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -15,6 +16,10 @@
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/createJs/soundjs-0.6.0.min.js"></script>
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/createJs/tweenjs-0.6.0.min.js"></script>
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/js/ajax.js"></script>
+<%-- <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/js/BrowserDetect.js"></script>
+<script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/js/thirdparty.js"></script>
+<script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>
+<script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/js/application.js"></script> --%>
 <!-- <script src="https://code.createjs.com/createjs-2014.12.12.min.js"></script> -->
 <script type="text/javascript">
 $(document).keydown(function(event){
