@@ -46,7 +46,7 @@
     $(function(){
     	
     	$(".search_item").click(function() {
-    		$span = $(this).find("span");
+    		var $span = $(this).find("span");
     		if ($span.hasClass("and")) {
     			$span.removeClass("and");
     			$span.addClass("or");
@@ -60,10 +60,25 @@
     		if (event.which == 13 || event.which == 9) {
     			var $ul = $("#search_list");
     			var $li = $ul.find("li").first().clone();
-    			$li.find("span").text($(this).val());
+    			var $span = $li.find("span");
+    			$span.text($(this).val());
     			$icon = '<icon class="glyphicon glyphicon-remove"></icon>';
-    			$li.find("span").append($icon);
+    			$span.append($icon);
+    			
+    			$span.bind("click", function() {
+    	    		if ($(this).hasClass("and")) {
+    	    			$(this).removeClass("and");
+    	    			$(this).addClass("or");
+    	    		} else {
+    	    			$(this).removeClass("or");
+    	    			$(this).addClass("and");
+    	    		}
+    			});
+    			
     			$ul.prepend($li);
+    			
+    			
+    			
     			$(this).val("");
     		}
     	});
