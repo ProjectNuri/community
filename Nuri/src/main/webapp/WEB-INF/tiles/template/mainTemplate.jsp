@@ -42,31 +42,22 @@ $(function(){
 	<a href="/" id="gLogo-nav" class="navChild">
 		<svg class="gLogo_g"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#gLogo_g"></use></svg>
 		<div class="gLogo_skinnerWrap">
-			<svg class="gLogo_skinner">
-				<use xmlns:xlink="http://www.w3.org/1999/xlink"
-					xlink:href="#gLogo_skinner"></use></svg>
+			<svg class="gLogo_skinner"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#gLogo_skinner"></use></svg>
 		</div>
 	</a>
-	<h1 class="navHeading navChild">Case Studies</h1>
+	<h1 class="navHeading navChild">누리</h1>
 	<hr class="navDivider navChild">
-	<a href="iss" class="navChild navLink">Dragon Age ISS<span
-		class="navLink_flourish"></span></a> <a href="rdio"
-		class="navChild navLink">Rdio for FxOS<span
-		class="navLink_flourish"></span></a> <a href="createjs"
-		class="navChild navLink">CreateJS<span class="navLink_flourish"></span></a>
-	<a href="atari" class="navChild navLink">Atari Arcade<span
-		class="navLink_flourish"></span></a> <a href="technitone"
-		class="navChild navLink">Technitone<span class="navLink_flourish"></span></a>
-	<h1 class="navHeading navChild">About Us</h1>
+	<a href="#" class="navChild navLink">로그인/회원가입<span class="navLink_flourish"></span></a>
+	<a href="#" class="navChild navLink">메인<span class="navLink_flourish"></span></a>
+	<h1 class="navHeading navChild">커뮤니티</h1>
 	<hr class="navDivider navChild">
-	<a href="ourcompany" class="navChild navLink">Our Company<span
-		class="navLink_flourish"></span></a> <a href="http://blog.gskinner.com"
-		class="navChild navLink">Blog<span class="navLink_flourish"></span></a>
-	<h1 class="navHeading navChild">Work With Us</h1>
+	<a href="#" class="navChild navLink">커뮤니티<span class="navLink_flourish"></span></a>
+	<h1 class="navHeading navChild">작업공간</h1>
 	<hr class="navDivider navChild">
-	<a href="mailto:hello@gskinner.com" class="navChild navLink email">hello@gskinner.com
-		<span class="navLink_flourish"></span>
-	</a>
+	<a href="#" class="navChild navLink">최근 작업 영역<span	class="navLink_flourish"></span></a>
+	<h1 class="navHeading navChild">개인공간</h1>
+	<hr class="navDivider navChild">
+	<a href="mailto:hello@gskinner.com" class="navChild navLink email">hello@gskinner.com<span class="navLink_flourish"></span></a>
 </div>
 <div id="navToggle">
 	<div id="navIcon" class="default">
