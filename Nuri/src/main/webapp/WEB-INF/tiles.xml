@@ -23,6 +23,16 @@
 		<put-attribute name="rightSider" expression="/WEB-INF/tiles/common/rightSider.jsp" />
 		<put-attribute name="bottomSider" expression="/WEB-INF/tiles/common/bottomSider.jsp" />
 	</definition>
+	
+	<definition name="*/*" templateExpression="/WEB-INF/tiles/template/mainTemplate.jsp" extends="base">
+		<put-attribute name="meta" expression="/WEB-INF/tiles/common/meta.jsp" />
+		<put-attribute name="header" expression="/WEB-INF/tiles/common/header.jsp" />
+		<put-attribute name="body" expression="/WEB-INF/views/{1}/{2}.jsp" />
+		<put-attribute name="topSider" expression="/WEB-INF/tiles/common/topSider.jsp" />
+		<put-attribute name="leftSider" expression="/WEB-INF/tiles/common/leftSider.jsp" />
+		<put-attribute name="rightSider" expression="/WEB-INF/tiles/common/rightSider.jsp" />
+		<put-attribute name="bottomSider" expression="/WEB-INF/tiles/common/bottomSider.jsp" />
+	</definition>
 	<!-- 
 	<definition name="*/*" templateExpression="/WEB-INF/tiles/front/template.jsp" extends="base">
 		<put-attribute name="meta" expression="/WEB-INF/tiles/front/meta.jsp" />
