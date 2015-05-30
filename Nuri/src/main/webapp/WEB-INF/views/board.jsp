@@ -45,6 +45,8 @@
     <script>
     $(function(){
     	
+    	$("#search_list").sortable();
+    	
     	$("#search_list").click(function(e) {
     		var $target = $(e.target);
     		if ($target.parent().hasClass("search_item")) {
