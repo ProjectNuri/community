@@ -45,39 +45,32 @@
     <script>
     $(function(){
     	
-    	$(".search_item").click(function() {
-    		var $span = $(this).find("span");
-    		if ($span.hasClass("and")) {
-    			$span.removeClass("and");
-    			$span.addClass("or");
-    		} else {
-    			$span.removeClass("or");
-    			$span.addClass("and");
+    	$("#search_list").click(function(e) {
+    		var $target = $(e.target);
+    		if ($target.parent().hasClass("search_item")) {
+        		if ($target.hasClass("and")) {
+        			$target.removeClass("and");
+        			$target.addClass("or");
+        		} else {
+        			$target.removeClass("or");
+        			$target.addClass("and");
+        		}
+    		} else if ($target.hasClass("remove")) {
+    			$target.parent().parent().remove();
     		}
-    	});
+    		
+     	});
     	
     	$("#search_box").keypress(function(event) {
     		if (event.which == 13 || event.which == 9) {
     			var $ul = $("#search_list");
-    			var $li = $ul.find("li").first().clone();
+    			var $li = $('<li class="search_item"><span class="badge and">keyword</span></li>');
     			var $span = $li.find("span");
     			$span.text($(this).val());
-    			$icon = '<icon class="glyphicon glyphicon-remove"></icon>';
+    			$icon = '<icon class="remove glyphicon glyphicon-remove"></icon>';
     			$span.append($icon);
     			
-    			$span.bind("click", function() {
-    	    		if ($(this).hasClass("and")) {
-    	    			$(this).removeClass("and");
-    	    			$(this).addClass("or");
-    	    		} else {
-    	    			$(this).removeClass("or");
-    	    			$(this).addClass("and");
-    	    		}
-    			});
-    			
     			$ul.prepend($li);
-    			
-    			
     			
     			$(this).val("");
     		}
@@ -203,9 +196,9 @@
 		<div class="col-md-4">
 			<h1>keyword-list</h1>
 			<ul id="search_list" class="list-inline">
-				<li class="search_item"><span class="badge and">프로그래밍<icon class="glyphicon glyphicon-remove"></icon></span></li>
-				<li class="search_item"><span class="badge or">게임<icon class="glyphicon glyphicon-remove"></icon></span></li>
-				<li class="search_item"><span>빨간색은 and 키워드, 초록색은 or 키워드 / 클릭하면 색 바뀜. 드래그해서 순서 바꿈 가능</span></li>
+				<li class="search_item"><span class="badge and">프로그래밍<icon class="remove glyphicon glyphicon-remove"></icon></span></li>
+				<li class="search_item"><span class="badge or">게임<icon class="remove glyphicon glyphicon-remove"></icon></span></li>
+				<li class=""><span>빨간색은 and 키워드, 초록색은 or 키워드 / 클릭하면 색 바뀜. 드래그해서 순서 바꿈 가능</span></li>
 			</ul>
 		</div>
 	</div>
