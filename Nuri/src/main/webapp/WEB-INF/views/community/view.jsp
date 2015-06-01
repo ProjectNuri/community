@@ -2,7 +2,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#sidebar-bottom").load("/board");	
+	$("#sidebar-bottom").load("/community/list");
+	$("#sidebar-left").load("/community/viewon");
 });
 </script>
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet" type="text/css">
@@ -17,7 +18,8 @@ body {
   height: 100vh;
   overflow: hidden;
   background: radial-gradient(#5eafe7, #257bb7);
-  color: #fff;
+  margin: 0px;
+  /* color: #fff; */
 }
 h1 {
   font-weight: 400;
@@ -277,7 +279,11 @@ path {
 
 #sidebar-bottom {
 	display:block;
-	height:300px;
+	height:400px;
+}
+
+#sidebar-left {
+	display:block;
 }
 </style>
 <fmt:formatDate var="date" value="${Content.createdDate}" pattern="yyyy-MM-dd HH:mm:ss"/>

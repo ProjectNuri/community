@@ -269,7 +269,7 @@ figure {
 		<div class="row">
 			<div class="col-md-12">
 			<figure class="photoset-item">
-				<a href="#"><img src="holder.js/320x180"></a>
+				<a href="#"><img src="holder.js/320x180/sky"></a>
 				<figcaption>A lady walks briskly on a train platform in Bern, Switzerland. Photo © Terry Mun</figcaption>
 			</figure>
 			</div>

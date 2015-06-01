@@ -20,7 +20,11 @@ public class MeController {
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String main(HttpServletRequest request, Model model) {
-		return "me/main";
+		return "template/me";
 	}
 	
+	@RequestMapping(value = "/cloud", method = RequestMethod.GET)
+	public String cloud(HttpServletRequest request, Model model) {
+		return "me/cloud";
+	}
 }

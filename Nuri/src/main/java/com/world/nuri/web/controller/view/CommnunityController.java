@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.world.nuri.services.model.Board;
 import com.world.nuri.services.model.Content;
 import com.world.nuri.services.service.ContentService;
 
@@ -28,10 +27,10 @@ public class CommnunityController {
 	
 	@Autowired ContentService contentService;
 	
-	@RequestMapping(value = " ", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String main(HttpServletRequest request, Model model) {
 		model.addAttribute(Content.class.getSimpleName() + "s", contentService.list());
-		return "main";
+		return "template/community";
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -41,7 +40,7 @@ public class CommnunityController {
 	}
 	
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
-	public String view(HttpServletRequest request, Model model) {
+	public String view(@PathVariable Integer id, HttpServletRequest request, Model model) {
 		model.addAttribute(Content.class.getSimpleName(), contentService.get(1));
 		return "community/view";
 	}
@@ -50,5 +49,11 @@ public class CommnunityController {
 	public String contents2(HttpServletRequest request, Model model) {
 		model.addAttribute(Content.class.getSimpleName(), contentService.get(1));
 		return "board_contents2";
+	}
+	
+	@RequestMapping(value = "/viewon", method = RequestMethod.GET)
+	public String viewon(HttpServletRequest request, Model model) {
+//		model.addAttribute(Content.class.getSimpleName(), contentService.get(1));
+		return "community/sider/leftSider";
 	}
 }
