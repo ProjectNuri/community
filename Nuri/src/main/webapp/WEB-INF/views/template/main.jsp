@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" session="false"%>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <!DOCTYPE html>
 <html lang="ko">
 <meta charset="UTF-8">
@@ -59,19 +58,17 @@ $( "#other" ).click(function() {
 </head>
 <body>
 <!-- body start -->
-<tiles:insertAttribute name="iconSvg" />
+<%-- <tiles:insertAttribute name="iconSvg" /> --%>
+<div id="iconSvg">
+</div>
 <div id="transitionPanel" class="default"></div>
 <div id="sidebar-top" class="navbar navbar-default" role="navigation"></div>
 <div id="sidebar-left" class="navbar navbar-default" role="navigation" style="padding-left:10px; padding-right:10px;"></div>
 <div id="sidebar-right" class="navbar navbar-default" role="navigation" style="padding-left:10px; padding-right:10px;"></div>
 <div id="sidebar-bottom" class="navbar navbar-default navbar-fixed-bottom" role="navigation"></div>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("body div.container").load("/board");
-});
-</script>
 <div class="container">
-
+	<div class="inner">
+	</div>
 <script type="text/javascript">
 $(function(){
 	$("#navToggle").mouseover(function() { 
@@ -123,5 +120,13 @@ $(function(){
 </div>
 
 </div><!-- body end -->
+<script type="text/javascript">
+$(document).ready(function(){
+	$("body div.container div.inner").load("/community/list");
+});
+$(document).ready(function(){
+	$("#iconSvg").load("/iconSvg");
+});
+</script>
 </body>
 </html>

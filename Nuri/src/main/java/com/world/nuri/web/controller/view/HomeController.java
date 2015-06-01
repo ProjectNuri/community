@@ -29,7 +29,7 @@ public class HomeController extends GenericViewController<Object> {
 	@Autowired private MenuService menuService;
 	@Autowired private UserService userService;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String home(Locale locale, HttpServletRequest request, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		

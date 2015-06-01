@@ -1,0 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deployment System</title>
+<script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/jquery/jquery-2.1.0.min.js"></script>
+<script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/angular/angular.min.js"></script>
+<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+<script type="text/javascript">
+angular.module('myApp', ['ui.bootstrap']);
+</script>
+<script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/js/util.js"></script>
+
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/bootstrap/bootstrap.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/bootstrap/bootstrap-theme.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/common.css">

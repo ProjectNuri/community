@@ -51,21 +51,13 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter {
         return urlBasedViewResolver;
     }
 	
-	@Bean
-	public TilesConfigurer tilesConfigurer() {
-		TilesConfigurer tilesConfigurer = new TilesConfigurer();
-		tilesConfigurer.setDefinitions("/WEB-INF/tiles.xml");
-		tilesConfigurer.setCheckRefresh(true);
-		return tilesConfigurer;
-	}
-	
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
         internalResourceViewResolver.setViewClass(JstlView.class);
         internalResourceViewResolver.setPrefix("/WEB-INF/views/");
         internalResourceViewResolver.setSuffix(".jsp");
-        internalResourceViewResolver.setOrder(2);
+        internalResourceViewResolver.setOrder(1);
         return internalResourceViewResolver;
     }
 
