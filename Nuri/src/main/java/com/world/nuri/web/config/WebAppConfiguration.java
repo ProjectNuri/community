@@ -43,6 +43,14 @@ public class WebAppConfiguration extends WebMvcConfigurerAdapter {
 		return new StandardServletMultipartResolver();
 	}
 	
+	/*@Bean
+    public UrlBasedViewResolver urlBasedViewResolver() {
+		UrlBasedViewResolver urlBasedViewResolver = new TilesViewResolver();
+		urlBasedViewResolver.setViewClass(TilesView.class);
+		urlBasedViewResolver.setOrder(1);
+        return urlBasedViewResolver;
+    }*/
+	
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver() {
         InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();

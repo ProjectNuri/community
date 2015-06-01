@@ -1,20 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" session="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/normalize.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/lib/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/lib/bootstrap/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/floatnav.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
 
-	<script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/jquery/jquery-2.1.0.min.js"></script>
-<script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/bootstrap/js/bootstrap.min.js"></script>
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/holder/holder.js"></script>
-<script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/createJs/easeljs-0.8.0.min.js"></script>
-<script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/createJs/preloadjs-0.6.0.min.js"></script>
-<script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/createJs/soundjs-0.6.0.min.js"></script>
-<script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/createJs/tweenjs-0.6.0.min.js"></script>
-<script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/js/ajax.js"></script>
     <!-- These few CSS files are just to make this example page look nice. You can ignore them. -->
     <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/codepen.css"> --%>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/reset-fonts/reset-fonts.css">
@@ -34,8 +22,6 @@
 
     <!-- jQuery and jQuery UI are required dependencies. -->
     <!-- Although we use jQuery 1.4 here, it's tested with the latest too (1.8.3 as of writing this.) -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
 
     <!-- The real deal -->
     <script src="/resources/assets/lib/tag-it/js/tag-it.js" type="text/javascript" charset="utf-8"></script>

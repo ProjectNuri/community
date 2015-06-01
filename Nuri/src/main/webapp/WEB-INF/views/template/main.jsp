@@ -12,12 +12,14 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/jquery/jquery-2.1.0.min.js"></script>
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/bootstrap/js/bootstrap.min.js"></script>
-<script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/holder/holder.js"></script>
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/createJs/easeljs-0.8.0.min.js"></script>
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/createJs/preloadjs-0.6.0.min.js"></script>
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/createJs/soundjs-0.6.0.min.js"></script>
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/createJs/tweenjs-0.6.0.min.js"></script>
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/js/ajax.js"></script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
 <%-- <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/js/BrowserDetect.js"></script>
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/js/thirdparty.js"></script>
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>

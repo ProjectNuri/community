@@ -283,14 +283,14 @@ figure {
 		<div class="row">
 			<div class="col-md-12">
 			<figure class="photoset-item">
-				<a href="#"><img src="holder.js/320x180"></a>
+				<a href="#"><img data-src="holder.js/320x180/sky"></a>
 				<figcaption>A lady walks briskly on a train platform in Bern, Switzerland. Photo © Terry Mun</figcaption>
 			</figure>
 			</div>
 		</div>
 		<div class="row" style="min-height:30px; margin: 0px; padding: 1.5px;background:gray;">
 			<div class="col-md-7" style="padding:0px;">
-				<img src="holder.js/23x27">아이디
+				<img data-src="holder.js/23x27">아이디
 			</div>
 			<div class="col-md-5" style="padding:7px 7px 0 9px">
 				<span>0</span>
