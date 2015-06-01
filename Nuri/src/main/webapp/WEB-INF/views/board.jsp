@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
     <!-- These few CSS files are just to make this example page look nice. You can ignore them. -->
+    <%-- <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/codepen.css"> --%>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/reset-fonts/reset-fonts.css">
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/base/base-min.css">
     <link href="http://fonts.googleapis.com/css?family=Brawler" rel="stylesheet" type="text/css">
@@ -14,10 +15,6 @@
 
     <!-- INSTRUCTIONS -->
 
-    <!-- 2 CSS files are required: -->
-    <!--   * Tag-it's base CSS (jquery.tagit.css). -->
-    <!--   * Any theme CSS (either a jQuery UI theme such as "flick", or one that's bundled with Tag-it, e.g. tagit.ui-zendesk.css as in this example.) -->
-    <!-- The base CSS and tagit.ui-zendesk.css theme are scoped to the Tag-it widget, so they shouldn't affect anything else in your site, unlike with jQuery UI themes. -->
     <link href="/resources/assets/lib/tag-it/css/jquery.tagit.css" rel="stylesheet" type="text/css">
     <link href="/resources/assets/lib/tag-it/css/tagit.ui-zendesk.css" rel="stylesheet" type="text/css">
     <!-- If you want the jQuery UI "flick" theme, you can use this instead, but it's not scoped to just Tag-it like tagit.ui-zendesk is: -->
@@ -205,36 +202,91 @@
 		</div>
 	</div>
 </div>
+
+<style type="text/css">
+svg {
+	width: 15px;
+	height: 15px;
+	display: inline-block;
+	fill: #999;
+	position: relative;
+	top: -1px;
+	vertical-align: middle;
+}
+
+.icon-heart {
+	fill: #999;
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: all 0.25s linear;
+	transition: all 0.25s linear;
+}
+
+.photoset-item figcaption {
+	background-color: rgba(255, 255, 255, .75);
+	box-sizing: border-box;
+	font-size: .75rem;
+	padding: .5rem;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	-webkit-transform: translateY(100%);
+	transform: translateY(100%);
+	transition: all .5s ease-in-out;
+}
+
+figure {
+	margin: 0;
+	overflow: hidden;
+	position: relative;
+	-webkit-backface-visibility: hidden;
+}
+
+.photoset-item a {
+  border: 0;
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.photoset-item img {
+	display: block;
+	max-width: 100%;
+	transition: all .25s ease-in-out;
+}
+
+.photoset-item:hover a + figcaption {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+</style>
 <!-- <div class="row"> -->
 	<c:forEach items="${Contents}" var="content">
-	<div style="width:318px; float:left; margin-right:-3px; margin-bottom:25px;">
+	<div style="float:left; margin:0px 5px 10px 0px">
 		<fmt:formatDate var="date2" value="${content.createdDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 		<div class="row">
 			<div class="col-md-12">
-				<div class=""><img src="holder.js/288x162"></div>
+			<figure class="photoset-item">
+				<a href="#"><img src="holder.js/320x180"></a>
+				<figcaption>A lady walks briskly on a train platform in Bern, Switzerland. Photo © Terry Mun</figcaption>
+			</figure>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<span style="font-size:18px; overflow: hidden; font-weight: bold;"><a href="#">${content.name}</a></span>
+		<div class="row" style="min-height:30px; margin: 0px; padding: 1.5px;background:gray;">
+			<div class="col-md-7" style="padding:0px;">
+				<img src="holder.js/23x27">아이디
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<span style="font-size:15px;">by <a href="#">작성자</a></span>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-8">
-				<span style="font-size:13px;">100,000</span>
-			</div>
-			<div class="col-md-4">
-				<span style="font-size:13px;">10,000</span>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<span style="font-size:13px;">${date2}</span>
+			<div class="col-md-5" style="padding:7px 7px 0 9px">
+				<span>0</span>
+				<svg viewBox="0 0 100 100"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-comment"></use></svg>
+				<span>876</span>
+				<svg viewBox="0 0 100 100"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-eye"></use></svg>
+				<span>56</span>
+				<svg viewBox="0 0 100 100" class="icon-heart"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-heart"></use></svg></span>
 			</div>
 		</div>
 	</div>
