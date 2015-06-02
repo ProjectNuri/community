@@ -19,8 +19,12 @@ public class WorkspaceController {
 	private static final Logger logger = LoggerFactory.getLogger(WorkspaceController.class);
 	
 	@RequestMapping(value = "", method = RequestMethod.GET)
+	public String root(HttpServletRequest request, Model model) {
+		return "template/workspace";
+	}
+	
+	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String main(HttpServletRequest request, Model model) {
 		return "workspace/main";
 	}
-	
 }
