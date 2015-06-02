@@ -1,4 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" session="false"%>
+<style type="text/css">
+ul.comments {
+	list-style:none; margin:0; padding:0; display:block; width:400px;
+}
+li.comment {
+	clear:both; padding-top:8px; border-top: border-top: 1px solid #e1e2e3; margin:0 12px; padding 4px 0; position:relative; word-wrap:break-word;
+}
+ul.comments li.comment div.thumbnail {
+	float:left;
+}
+ul.comments li.comment div.thumbnail a img {
+	width:40px; height:40px;
+}
+ul.comments li.comment div.contents {
+	margin: 0; padding-left:8px; overflow:hidden; position:relative;
+}
+</style>
+
 <div class="navbar-header">
 	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sidebar-left .navbar-collapse">
 	    <span class="icon-bar"></span>
@@ -29,24 +47,6 @@
 </ul>
 </div>
 
-
-<style type="text/css">
-ul.comments {
-	list-style:none; margin:0; padding:0; display:block; width:400px;
-}
-li.comment {
-	clear:both; padding-top:8px; border-top: border-top: 1px solid #e1e2e3; margin:0 12px; padding 4px 0; position:relative; word-wrap:break-word;
-}
-ul.comments li.comment div.thumbnail {
-	float:left;
-}
-ul.comments li.comment div.thumbnail a img {
-	width:40px; height:40px;
-}
-ul.comments li.comment div.contents {
-	margin: 0; padding-left:8px; overflow:hidden; position:relative;
-}
-</style>
 <div id="write" style="clear:both; width:400px;">
 	<textarea style="width:100%; height:23px;" placeholder="댓글을 입력하세요."></textarea>
 </div>

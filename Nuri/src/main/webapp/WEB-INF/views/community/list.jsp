@@ -241,6 +241,7 @@ figure {
 	overflow: hidden;
 	position: relative;
 	-webkit-backface-visibility: hidden;
+	cursor:pointer;
 }
 
 .photoset-item a {
@@ -261,29 +262,137 @@ figure {
   -webkit-transform: translateY(0);
   transform: translateY(0);
 }
+
+.pic-caption {
+    cursor: default;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(44, 62, 80, 0.92);
+    opacity:0;
+    padding: 10px;
+    text-align:center;
+    color: #fff;
+    cursor:pointer;
+}
+
+.pic{
+    /* max-width: 300px; */
+    /* max-height: 200px; */
+    position: relative;
+    overflow: hidden;
+    /* margin: 10px;    */
+    
+    display: inline-block;
+
+    animation: anima 2s;
+    -webkit-animation: anima 2s;
+  
+   backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+}
+
+.pic:hover .bottom-to-top,
+.pic:hover .top-to-bottom,
+.pic:hover .left-to-right,
+.pic:hover .right-to-left,
+.pic:hover .rotate-in,
+.pic:hover .rotate-out,
+.pic:hover .open-up,
+.pic:hover .open-down,
+.pic:hover .open-left,
+.pic:hover .open-right,
+.pic:hover .come-left,
+.pic:hover .come-right{
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  opacity: 1;
+}
+/*Bottom to Top*/
+.bottom-to-top{
+    top:50%;    
+    left:0;
+}
+.pic:hover .bottom-to-top{
+    top:0;
+    left:0;
+}
+
+.pic-title{
+    font-size: 1.8em;
+}
+
+/*All classes with similar attribute*/
+a ,a:hover,
+.pic .pic-image,
+.pic-caption,
+.pic:hover .pic-caption,
+.pic:hover img{
+     .transition(all, 0.5s, ease);
+}
+
+.pic .thumbnail {
+	width:320px;
+	padding:0;
+	border: none;
+}
+
+/*Animation Effect*/
+@keyframes anima{
+    from{
+        margin-top: -50px;
+        opacity: 0;
+    }
+    to{
+        margin: auto;
+        opacity: 1;
+    }
+}
+@-webkit-keyframes anima from{
+    margin-left: -20px;
+    opacity: 0;
+}
+-webkit-keyframes anima to{
+    margin-left: 10px;
+    opacity: 1;
+}
 </style>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("span.pic-caption").click(function(){
+		$("body div.container div.inner").load("/community/view/1");
+	});
+});
+</script>
 <!-- <div class="row"> -->
 	<c:forEach items="${Contents}" var="content">
 	<div style="float:left; margin:0px 5px 10px 0px">
 		<fmt:formatDate var="date2" value="${content.createdDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 		<div class="row">
 			<div class="col-md-12">
-			<figure class="photoset-item">
-				<a href="#"><img src="holder.js/320x180/sky"></a>
-				<figcaption>A lady walks briskly on a train platform in Bern, Switzerland. Photo © Terry Mun</figcaption>
+			<figure class="photoset-item pic">
+				<a href="#" style="width:320px; height:180px; overflow:hidden;"><!-- <img src="holder.js/320x180/sky"> --><img src="${content.thumbnailUrl}" class="thumbnail">
+				<span class="pic-caption bottom-to-top">
+			        <h1 class="pic-title">${content.name}</h1>
+			        <p>${content.description}</p>
+			    </span>
+			    </a>
+				<!-- <figcaption>A lady walks briskly on a train platform in Bern, Switzerland. Photo © Terry Mun</figcaption> -->
 			</figure>
 			</div>
 		</div>
-		<div class="row" style="min-height:30px; margin: 0px; padding: 1.5px;background:gray;">
-			<div class="col-md-7" style="padding:0px;">
-				<img src="holder.js/23x27">아이디
+		<div class="row" style="min-height:33px; margin: 0px; padding: 1.5px;background:gray; color:#fff">
+			<div class="col-md-5" style="padding:0px;">
+				<img src="holder.js/23x27"><span style="padding-left:5px;">아이디</span>
 			</div>
-			<div class="col-md-5" style="padding:7px 7px 0 9px">
+			<div class="col-md-7" style="padding:7px 7px 0 9px">
 				<span>0</span>
 				<svg viewBox="0 0 100 100"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-comment"></use></svg>
-				<span>876</span>
+				<span>${content.views}</span>
 				<svg viewBox="0 0 100 100"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-eye"></use></svg>
-				<span>56</span>
+				<span>${content.likes}</span>
 				<svg viewBox="0 0 100 100" class="icon-heart"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-heart"></use></svg></span>
 			</div>
 		</div>

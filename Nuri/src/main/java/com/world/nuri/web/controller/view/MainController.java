@@ -23,6 +23,11 @@ public class MainController {
 		return "template/main";
 	}
 	
+	@RequestMapping(value = "floatnav", method = RequestMethod.GET)
+	public String floatnav(HttpServletRequest request, Model model) {
+		return "common/floatnav";
+	}
+	
 	@RequestMapping(value = "iconSvg", method = RequestMethod.GET)
 	public String iconSvg(HttpServletRequest request, Model model) {
 		return "common/iconSvg";

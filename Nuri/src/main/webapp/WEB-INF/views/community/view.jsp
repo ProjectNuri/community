@@ -13,13 +13,15 @@ $(document).ready(function(){
   box-sizing: border-box;
 }
 body {
+	margin: 0px;
+	height: 100vh;
+	overflow: hidden;
+	background: radial-gradient(#5eafe7, #257bb7);
+}
+body div.container div.inner {
   font-family: "Roboto";
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  background: radial-gradient(#5eafe7, #257bb7);
-  margin: 0px;
-  /* color: #fff; */
+  color: #fff;
 }
 h1 {
   font-weight: 400;
@@ -280,12 +282,50 @@ path {
 #sidebar-bottom {
 	display:block;
 	height:400px;
+	animation-duration: 5s;
+	-webkit-animation-duration: 5s;
+	transform:translateY(21vw);
+	-webkit-transform:translateY(21vw);
 }
 
 #sidebar-left {
 	display:block;
+	-webkit-animation-duration: 5s;
+	animation-duration: 5s;
+	-webkit-transform:translateX(-24vw);
+	transform:translateX(-24vw);
 }
+
+/* #siderbar-left {
+  animation: siderbar-left 2.5s ease-out;
+}
+@keyframes siderbar-left {
+  from {
+    opacity: 1;
+    transform: translateX(0vw);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(-24vw);
+  }
+} */
 </style>
+<script type="text/javascript">
+$(document).keydown(function(event){
+	if ( event.which == 8 ) { //뒤로가기 버튼
+		/* event.preventDefault(); */
+	} else if(event.which == 37 ){
+		$("#sidebar-left").css('-webkit-transform', 'translateX(-24vw)');
+	} else if(event.which == 39 ){
+		$("#sidebar-left").css('-webkit-transform', 'translateX(0vw)');
+	} else if(event.which == 40 ){
+		$("#sidebar-bottom").css('-webkit-transform', 'translateY(21vw)');
+	} else if(event.which == 38 ){
+		$("#sidebar-bottom").css('-webkit-transform', 'translateY(0vw)');
+	}
+	/* console.log(event.which); */
+});
+</script>
 <fmt:formatDate var="date" value="${Content.createdDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 <div id="one" class="slideswitch"></div>
 <div id="two" class="slideswitch"></div>
@@ -298,8 +338,10 @@ path {
   <div class="navigation"><a class="prev disabled"></a><a href="#two" class="next"></a></div>
 
   <div class="content">
-    <h1>Create a “PowerPoint” Like Presentation Using Pure HTML and CSS3</h1>
-    <p>Handle navigation, transitions, design and layout all with CSS3</p>
+    <!-- <h1>Create a “PowerPoint” Like Presentation Using Pure HTML and CSS3</h1>
+    <p>Handle navigation, transitions, design and layout all with CSS3</p> -->
+    <h1>누리 서비스에서 커뮤니티 상세 화면입니다.작업 도구로 제작한 컨텐츠 입니다.</h1>
+    <p>전체화면으로 보는 것을 권장합니다</p>
   </div>
 
 </div>
@@ -309,9 +351,9 @@ path {
   <div class="navigation"><a href="#one" class="prev"></a><a href="#three" class="next"></a></div>
 
   <div class="content flip">
-    <h1>That was a "Flip" Transition</h1>
-    <p>And we have a full screen background image too.</p>
-    <p>There's a GIF coming up next with a "Slide" transition.</p>
+    <h1>화면 단위를 통해 페이지를 넘깁니다.</h1>
+    <p>더 나은 전달을 목표로 합니다.</p>
+    <p>이후 PDF 파일로도 받아 PC에서 볼 수 있도록 합니다.</p>
   </div>
 
 </div>
@@ -329,8 +371,8 @@ path {
   <div class="navigation"><a href="#three" class="prev"></a><a href="#five" class="next"></a></div>
 
   <div class="content grow">
-    <h1>This Time We Used a<br>"Grow" Transition</h1>
-    <p>And we also used psuedo elements <br>to place a circle behind this text</p>
+    <h1>글이나 그림 이외에 <br>다양한 컨텐츠를 <br>추가할 수 있습니다.</h1>
+    <p>다양한 화면 구성으로<br>표현됩니다</p>
   </div>
 
 </div>
@@ -340,7 +382,7 @@ path {
   <div class="navigation"><a href="#four" class="prev"></a><a class="next disabled"></a></div>
 
   <div class="content">
-    <h1>And CSS3 Animation Can Run Inline</h1>
+    <h1>누리 서비스입니다</h1>
 
     <div class="logo">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" version="1.1" preserveAspectRatio="xMidYMid meet">

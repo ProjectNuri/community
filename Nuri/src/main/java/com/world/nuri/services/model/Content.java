@@ -18,7 +18,11 @@ public class Content extends GenericModel {
 
 	@NotNull
 	private String boardId;
-	private String contents;
+	private String description;
+	private String thumbnailUrl;
+	private Integer views;
+	private Integer likes;
+	private Integer favorites;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.content", cascade=CascadeType.ALL)
 	private Set<ContentTag> ContentTags = new HashSet<ContentTag>(0);
@@ -30,13 +34,37 @@ public class Content extends GenericModel {
 	public void setBoardId(String boardId) {
 		this.boardId = boardId;
 	}
-	public String getContents() {
-		return contents;
+	public String getDescription() {
+		return description;
 	}
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
+	public String getThumbnailUrl() {
+		return thumbnailUrl;
+	}
+	public void setThumbnailUrl(String thumbnailUrl) {
+		this.thumbnailUrl = thumbnailUrl;
+	}
+	public Integer getViews() {
+		return views;
+	}
+	public void setViews(Integer views) {
+		this.views = views;
+	}
+	public Integer getLikes() {
+		return likes;
+	}
+	public void setLikes(Integer likes) {
+		this.likes = likes;
+	}
+	public Integer getFavorites() {
+		return favorites;
+	}
+	public void setFavorites(Integer favorites) {
+		this.favorites = favorites;
+	}
 	public Set<ContentTag> getContentTags() {
 		return ContentTags;
 	}

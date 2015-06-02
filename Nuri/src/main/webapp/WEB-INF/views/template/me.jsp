@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/normalize.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/lib/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/assets/lib/bootstrap/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/floatnav.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/main.css">
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/jquery/jquery-2.1.0.min.js"></script>
 <script data-main="/resources/js/main" src="${pageContext.request.contextPath}/resources/assets/lib/bootstrap/js/bootstrap.min.js"></script>
@@ -28,7 +27,7 @@
 <script type="text/javascript">
 $(document).keydown(function(event){
 	if ( event.which == 8 ) { //뒤로가기 버튼
-		event.preventDefault();
+		/* event.preventDefault(); */
 	}
 	console.log(event.which);
 });
@@ -71,63 +70,14 @@ $( "#other" ).click(function() {
 <div class="container">
 	<div class="inner">
 	</div>
-<script type="text/javascript">
-$(function(){
-	$("#navToggle").mouseover(function() { 
-		if($("#navIcon").attr('class') != "close") $("#navIcon").attr('class', 'plus');
-	});
-	$("#navToggle").mouseout(function() {
-		if($("#navIcon").attr('class') != "close") $("#navIcon").attr('class', 'default');
-	});
-	$("#navToggle").click(function() {
-		if($("#navIcon").attr('class') == "close") {
-			$("#navIcon").attr('class', 'plus');
-			$("#navPanel").attr('class', 'hover');
-			$("#navContent").attr('class', 'remove');
-		} else {
-			$("#navIcon").attr('class', 'close');
-			$("#navPanel").attr('class', 'open');
-			$("#navContent").attr('class', 'open');
-		}
-	});
-});
-</script>
-
-<div id="navPanel"></div>
-<div id="navContent">
-	<a href="/" id="gLogo-nav" class="navChild">
-		<svg class="gLogo_g"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#gLogo_g"></use></svg>
-		<div class="gLogo_skinnerWrap">
-			<svg class="gLogo_skinner"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#gLogo_skinner"></use></svg>
-		</div>
-	</a>
-	<h1 class="navHeading navChild">누리</h1>
-	<hr class="navDivider navChild">
-	<a href="#" class="navChild navLink">로그인/회원가입<span class="navLink_flourish"></span></a>
-	<a href="#" class="navChild navLink">메인<span class="navLink_flourish"></span></a>
-	<h1 class="navHeading navChild">커뮤니티</h1>
-	<hr class="navDivider navChild">
-	<a href="#" class="navChild navLink">커뮤니티<span class="navLink_flourish"></span></a>
-	<h1 class="navHeading navChild">작업공간</h1>
-	<hr class="navDivider navChild">
-	<a href="#" class="navChild navLink">최근 작업 영역<span	class="navLink_flourish"></span></a>
-	<h1 class="navHeading navChild">개인공간</h1>
-	<hr class="navDivider navChild">
-	<a href="mailto:hello@gskinner.com" class="navChild navLink email">hello@gskinner.com<span class="navLink_flourish"></span></a>
-</div>
-<div id="navToggle">
-	<div id="navIcon" class="default">
-		<span id="navIcon_topBar"></span> <span id="navIcon_bottomBar"></span>
-	</div>
-</div>
-
+	<div id="floatnav"></div>
 </div><!-- body end -->
+
 <script type="text/javascript">
 $(document).ready(function(){
-	$("body div.container div.inner").load("/me/cloud");
-});
-$(document).ready(function(){
+	$("#floatnav").load("/floatnav");
 	$("#iconSvg").load("/iconSvg");
+	$("body div.container div.inner").load("/me/cloud");
 });
 </script>
 </body>
