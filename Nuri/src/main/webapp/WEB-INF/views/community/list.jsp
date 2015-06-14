@@ -73,14 +73,16 @@
     		}
     	});
     	
-    	ajax.get("/api/tag/list", {}, function(data) {
+    	var tags = [];
+     	ajax.get("/api/tag/list", {}, function(data) {
     		if(data.success) {
     			console.log(data);
+    			tags = data;
     		}
     		else alert("태그 리스트 가져오기에 실패하였습니다.");
     	});
-    	
-        var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
+
+		var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
         //-------------------------------
         // Tag events
         //-------------------------------
@@ -101,8 +103,14 @@
             afterTagAdded: function(evt, ui) {
                 if (!ui.duringInitialization) {
                     addEvent('afterTagAdded: ' + eventTags.tagit('tagLabel', ui.tag));
+                    console.log(eventTags.tagit('tagLabel', ui.tag));
+                    var tagName = eventTags.tagit('tagLabel', ui.tag);
                     
-                    
+                    $(tags).foreach(function() {
+                        if ($(this).name == tagName) {
+                        	
+                        }
+                    });
                 }
             },
             beforeTagRemoved: function(evt, ui) {

@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.world.nuri.services.model.abstractModel.GenericModel;
 
 @Entity
@@ -26,6 +27,7 @@ public class Content extends GenericModel {
 	private Integer favorites;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@JsonManagedReference
 	@JoinColumn(name="contentId", referencedColumnName="id")
 	@OrderBy("createdDate DESC")
 	private List<ContentTag> contentTags;

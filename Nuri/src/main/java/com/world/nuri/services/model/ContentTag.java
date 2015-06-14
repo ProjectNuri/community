@@ -5,6 +5,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.world.nuri.services.model.abstractModel.GenericModel;
 
 @Entity
@@ -12,10 +13,12 @@ public class ContentTag extends GenericModel{
 	private static final long serialVersionUID = 1L;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
+	@JsonBackReference
 	@JoinColumn(name="contentId", referencedColumnName="id")
 	private Content content;
 	
 	@ManyToOne(fetch=FetchType.EAGER)
+	@JsonBackReference
 	@JoinColumn(name="tagId", referencedColumnName="id")
 	private Tag tag;
 
