@@ -1,12 +1,13 @@
 package com.world.nuri.services.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.validation.constraints.NotNull;
 
 import com.world.nuri.services.model.abstractModel.GenericModel;
@@ -24,9 +25,12 @@ public class Content extends GenericModel {
 	private Integer likes;
 	private Integer favorites;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pk.content", cascade=CascadeType.ALL)
-	private Set<ContentTag> ContentTags = new HashSet<ContentTag>(0);
-//	private User author;
+	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name="contentId", referencedColumnName="id")
+	@OrderBy("createdDate DESC")
+	private List<ContentTag> contentTags;
+
+	//	private User author;
 
 	public String getBoardId() {
 		return boardId;
@@ -65,11 +69,11 @@ public class Content extends GenericModel {
 	public void setFavorites(Integer favorites) {
 		this.favorites = favorites;
 	}
-	public Set<ContentTag> getContentTags() {
-		return ContentTags;
+	public List<ContentTag> getContentTags() {
+		return contentTags;
 	}
-	public void setContentTags(Set<ContentTag> contentTags) {
-		ContentTags = contentTags;
+	public void setContentTags(List<ContentTag> contentTags) {
+		this.contentTags = contentTags;
 	}
 
 	
