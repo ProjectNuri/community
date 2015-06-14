@@ -18,7 +18,7 @@ public class Tag extends GenericModel {
 
 	private static final long serialVersionUID = 1L;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JsonManagedReference
 	@JoinColumn(name="tagId", referencedColumnName="id")
 	@OrderBy("createdDate DESC")
