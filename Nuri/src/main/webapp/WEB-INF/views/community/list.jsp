@@ -38,6 +38,7 @@
 	</style>
     
     <script>
+    var tags;
     $(function(){
     	
     	$("#search_list").sortable();
@@ -73,16 +74,16 @@
     		}
     	});
     	
-    	var tags = [];
-     	ajax.get("/api/tag/list", {}, function(data) {
-    		if(data.success) {
-    			console.log(data);
+		var sampleTags = [];
+
+		ajax.get("/api/tag/list", {}, function(data) {
     			tags = data;
-    		}
-    		else alert("태그 리스트 가져오기에 실패하였습니다.");
+    			$(tags).each(function() {
+    				console.log($(this)[0].name);
+    				sampleTags.push($(this)[0].name);
+    			});
     	});
 
-		var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
         //-------------------------------
         // Tag events
         //-------------------------------
@@ -105,9 +106,17 @@
                     addEvent('afterTagAdded: ' + eventTags.tagit('tagLabel', ui.tag));
                     console.log(eventTags.tagit('tagLabel', ui.tag));
                     var tagName = eventTags.tagit('tagLabel', ui.tag);
-                    
-                    $(tags).foreach(function() {
-                        if ($(this).name == tagName) {
+                    $(tags).each(function() {
+                        if ($(this)[0].name == tagName) {
+                        	console.log($(this)[0].id);
+                    		ajax.get("/api/tag/get/" + $(this)[0].id, {}, function(data) {
+                    			console.log(data);
+                    			var contentTags = data.contentTags;
+                    			$(contentTags).each(function() {
+                    				console.log($(this)[0]);
+                    			});
+	                    	});
+                        } else {
                         	
                         }
                     });
@@ -323,7 +332,7 @@ $(document).ready(function(){
 </script>
 <!-- <div class="row"> -->
 	<c:forEach items="${Contents}" var="content">
-	<div style="float:left; margin:0px 5px 10px 0px">
+	<div class="item" style="float:left; margin:0px 5px 10px 0px">
 		<fmt:formatDate var="date2" value="${content.createdDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 		<div class="row">
 			<div class="col-md-12">
@@ -331,7 +340,7 @@ $(document).ready(function(){
 				<a href="#" style="width:320px; height:180px; overflow:hidden;"><!-- <img src="holder.js/320x180/sky"> --><img src="${content.thumbnailUrl}" class="thumbnail">
 				<span class="pic-caption bottom-to-top">
 			        <h1 class="pic-title">${content.name}</h1>
-			        <p>${content.description}</p>
+			        <p class="pic-desc">${content.description}</p>
 			    </span>
 			    </a>
 				<!-- <figcaption>A lady walks briskly on a train platform in Bern, Switzerland. Photo © Terry Mun</figcaption> -->
@@ -345,9 +354,9 @@ $(document).ready(function(){
 			<div class="col-md-7" style="padding:7px 7px 0 9px">
 				<span>0</span>
 				<svg viewBox="0 0 100 100"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-comment"></use></svg>
-				<span>${content.views}</span>
+				<span class="views">${content.views}</span>
 				<svg viewBox="0 0 100 100"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-eye"></use></svg>
-				<span>${content.likes}</span>
+				<span class="likes">${content.likes}</span>
 				<svg viewBox="0 0 100 100" class="icon-heart"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-heart"></use></svg></span>
 			</div>
 		</div>
