@@ -1,4 +1,4 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" session="false"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -212,11 +212,11 @@
 											width="200" height="200" alt="Folder thumbnail"> <span
 											class="text">Charts</span>
 									</a></li>
-									<li><a href="#" data-query="Canva" title="I  ❤  Canva">
+									<li><a href="#" data-query="Canva" title="I  â¤  Canva">
 											<span class="page on"></span><span class="page on"></span> <img
 											src="//static.canva.com/categoryThumbnails/canva.2.png"
 											width="200" height="200" alt="Folder thumbnail"> <span
-											class="text">I ❤ Canva</span>
+											class="text">I â¤ Canva</span>
 									</a></li>
 								</ul>
 							</div>

@@ -27,4 +27,9 @@ public class WorkspaceController {
 	public String main(HttpServletRequest request, Model model) {
 		return "workspace/main";
 	}
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test(HttpServletRequest request, Model model) {
+		return "workspace/test";
+	}
 }
