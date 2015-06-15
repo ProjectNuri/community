@@ -74,11 +74,8 @@
     	});
     	
     	var tags = [];
-     	ajax.get("/api/tag/list", {}, function(data) {
-    		if(data.success) {
-    			console.log(data);
-    			tags = data;
-    		}
+     	ajax.get("/api/tag/list", {}, function(tagDatas) {
+    		if(tagDatas != null) for(var i in tagDatas) tags.push(tagDatas[i].name);
     		else alert("태그 리스트 가져오기에 실패하였습니다.");
     	});
 
@@ -93,7 +90,8 @@
         };
 
         eventTags.tagit({
-            availableTags: sampleTags,
+            //availableTags: sampleTags,
+            availableTags: tags,
             allowSpaces: true,
             beforeTagAdded: function(evt, ui) {
                 if (!ui.duringInitialization) {
@@ -106,7 +104,7 @@
                     console.log(eventTags.tagit('tagLabel', ui.tag));
                     var tagName = eventTags.tagit('tagLabel', ui.tag);
                     
-                    $(tags).foreach(function() {
+                    $(tags).each(function() {
                         if ($(this).name == tagName) {
                         	
                         }

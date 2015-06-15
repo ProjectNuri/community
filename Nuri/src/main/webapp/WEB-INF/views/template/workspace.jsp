@@ -32,7 +32,7 @@ $(document).keydown(function(event){
 	console.log(event.which);
 });
 $(document).mousedown(function(event){
-	console.log(event.which);
+	//console.log(event.which);
 });
 /* $(window).on('beforeunload',function(){
 	console.log('beforeunload');
@@ -44,7 +44,7 @@ $(window).on('afterunload',function(){
 });
 $( "#target" ).keydown(function( event ) {
   if ( event.which == 13 ) {
-   event.preventDefault();
+   //event.preventDefault();
   }
   xTriggered++;
   var msg = "Handler for .keydown() called " + xTriggered + " time(s).";
@@ -77,7 +77,7 @@ $( "#other" ).click(function() {
 $(document).ready(function(){
 	$("#floatnav").load("/floatnav");
 	$("#iconSvg").load("/iconSvg");
-	$("body div.container div.inner").load("/workspace/main");
+	$("body div.container div.inner").load("/workspace/test");
 });
 </script>
 </body>
