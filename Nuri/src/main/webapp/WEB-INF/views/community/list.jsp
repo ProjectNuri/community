@@ -71,6 +71,10 @@
     			$span.text($(this).val());
     			$icon = '<icon class="remove glyphicon glyphicon-remove"></icon>';
     			$span.append($icon);
+    			$input = $('<input type="hidden" name="key_and" value="" />');
+    			$input.val($(this).val());
+    			
+    			$li.append($input);
     			
     			$ul.prepend($li);
     			
