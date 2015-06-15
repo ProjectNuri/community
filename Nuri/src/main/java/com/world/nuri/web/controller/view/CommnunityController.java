@@ -1,7 +1,10 @@
 package com.world.nuri.web.controller.view;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -53,18 +56,23 @@ public class CommnunityController {
 			, HttpServletRequest request, Model model) {
 		
 		
-		
-		List<Tag> tagList = new ArrayList<Tag>();
-		for (String tag : tags) {
-			if (tag.equals("Add Tag!")) {
-				continue;
-			}
-			tagList.add(tagService.getByKey("name", tag));
-			System.out.println(tagService.getByKey("name", tag).getName());
-		}
-		
 		List<Content> contents = new ArrayList<Content>();
-		contentTagService.listByTags(tagList).forEach(e -> contents.add(e.getContent()));;
+		if (tags.length != 0) {
+			List<Tag> tagList = new ArrayList<Tag>();
+			for (String tag : tags) {
+				Tag temp = tagService.getByKey("name", tag);
+				if (temp != null) {
+					tagList.add(temp);
+				}
+			}
+			
+			contents = contentTagService.listByTags(tagList)
+					.stream()
+					.map(e -> e.getContent())
+					.collect(Collectors.toList());
+		} else {
+			contents = contentService.list();
+		}
 		
 		return contents;
 	}

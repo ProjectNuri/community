@@ -92,6 +92,24 @@
         var addEvent = function(text) {
             $('#events_container').append(text + '<br>');
         };
+        
+        var search = function() {
+    		ajax.get("/community/search?"+$("#searchForm").serialize(), {}, function(data) {
+    			$list = $(".item-list");
+    			$item = $(".item").last().clone();
+    			
+    			$list.html("");
+    			$(data).each(function() {
+        			$item = $(".item").last().clone();
+        			$item.find(".thumbnail").attr("src", $(this)[0].thumbnailUrl);
+        			$item.find(".pic-title").attr("src", $(this)[0].name);
+        			$item.find(".pic-desc").attr("src", $(this)[0].description);
+        			$item.find(".views").attr("src", $(this)[0].views);
+        			$item.find(".likes").attr("src", $(this)[0].likes);
+        			$list.prepend($item.show());
+    			});
+    		});
+        }
 
         eventTags.tagit({
             availableTags: sampleTags,
@@ -107,11 +125,7 @@
                     console.log(eventTags.tagit('tagLabel', ui.tag));
                     var tagName = eventTags.tagit('tagLabel', ui.tag);
                     
-            		ajax.get("/community/search?"+$("#tagForm").serialize(), {}, function(data) {
-            			console.log(data);
-            			
-            			$item = $(".item").last().clone();
-            		});
+                    search();
                 }
             },
             beforeTagRemoved: function(evt, ui) {
@@ -119,6 +133,8 @@
             },
             afterTagRemoved: function(evt, ui) {
                 addEvent('afterTagRemoved: ' + eventTags.tagit('tagLabel', ui.tag));
+                
+                search();
             },
             onTagClicked: function(evt, ui) {
                 addEvent('onTagClicked: ' + eventTags.tagit('tagLabel', ui.tag));
@@ -130,16 +146,14 @@
     });
     </script>
 
+<form id="searchForm" name="searchForm" action="/community/search">
 <div class="page-header">
 	<div class="row">
 		<div class="col-md-6">
 			<h1>category</h1>
 			<div>
-			<form id="tagForm" name="tagForm" action="/community/search">
              <ul id="eventTags">
-                <li>Add Tag!</li>
             </ul>
-			</form>
 			</div>
  		</div>
 		<div class="col-md-2">
@@ -158,6 +172,7 @@
 		</div>
 	</div>
 </div>
+</form>
 
 <style type="text/css">
 svg {

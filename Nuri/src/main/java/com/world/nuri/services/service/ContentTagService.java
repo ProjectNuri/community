@@ -21,7 +21,7 @@ public class ContentTagService extends GenericService<ContentTag> {
 				where += ", ";
 		}
 		
-		where += ") group by contentId";
+		where += ") group by id, contentId";
 		
 		return em.createNativeQuery(SELECT_ALL_SQL + where, clazz).getResultList();
 	}
