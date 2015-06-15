@@ -81,3 +81,5 @@ insert into ContentTag (name, contentId, tagId, createdDate, modifiedDate) value
 
 insert into User(name,password,nickname,email,phone,createdDate, modifiedDate) values('ehnawh','ghksgml','이환희','ehnawh@gmail.com','010-5246-3043',NOW(),NOW());
 insert into User(name,password,nickname,email,phone,createdDate, modifiedDate) values('hsw93','tjddnr','허성욱','hsw93@gmail.com','010-4310-4728 ',NOW(),NOW());
+
+insert into Work (name, works, createdDate, modifiedDate) values ('누리서비스입니다.', '{"background":{"color":"rgba(14, 108, 173, 0.8)","image":"none"},"texts":[{"value":"안녕하세요. 누리서비스 입니다.","style":{"left":691,"top":329,"width":573,"height":49,"font-size":"40px","background-color":"rgba(255, 255, 255, 0)","color":"rgb(51, 51, 51)","overflow":"hidden","position":"absolute"}},{"value":"소개 하겠습니다.","style":{"left":806,"top":414,"width":315,"height":62,"font-size":"40px","background-color":"rgba(255, 255, 255, 0)","color":"rgb(51, 51, 51)","overflow":"hidden","position":"absolute"}}]}', NOW(), NOW());

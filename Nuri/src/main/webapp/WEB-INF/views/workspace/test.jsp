@@ -1,89 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" session="false"%>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<style type="text/css">
-.container {
-	padding:0px;
-}
-ol, ul {
-  list-style: none;
-}
-
-.tools > li {
-  margin: 8px 8px;
-}
-
-input[type="radio" i], input[type="checkbox" i] {
-  margin: 3px 0.5ex;
-  padding: initial;
-  background-color: initial;
-  border: initial;
-}
-
-input[type="radio" i] {
-  -webkit-appearance: radio;
-  box-sizing: border-box;
-}
-
-input[type="radio" i] {
-  margin: 3px 3px 0px 5px;
-}
-.tools {
-  position: absolute;
-  top: 10vh;
-  left: 0;
-  background-color: #888899;
-  border: 1px solid #6e6e80;
-  border-left: 0;
-  margin-left:-40px;
-}
-.tools > li {
-  margin: 8px 8px;
-}
-.tools > li.separator {
-  margin: 8px 4px;
-  border-top: 1px solid #6e6e80;
-  border-bottom: 1px solid #a3a3b1;
-}
-.tool-btn > label {
-  position: relative;
-  display: inline-block;
-  box-sizing: border-box;
-  border: 1px solid #4b4b57;
-  font-size: 12px;
-  border-radius: 2px;
-  padding: 8px;
-  color: #cdcdd4;
-  background-color: #888899;
-  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.2), inset 1px 1px 1px rgba(255, 255, 255, 0.3), inset -1px -1px 1px rgba(0, 0, 0, 0.3);
-  transition: background-color 125ms;
-}
-.tool-btn > input[type=radio] {
-  position: absolute;
-  font-size: 0;
-  left: -100%;
-}
-.tool-btn > input[type=radio]:checked + label {
-  background-color: #4b4b57;
-  box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.3);
-}
-.tool-btn > input[type=radio]:focus + label {
-  box-shadow: 0 0 15px 1px #3498db;
-}
-
-.fa-fw {
-  width: 1.28571429em;
-  text-align: center;
-}
-
-.fa {
-  display: inline-block;
-  font: normal normal normal 14px/1 FontAwesome;
-  font-size: inherit;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-</style>
 <ul class="tools">
   <li class="tool-btn">
     <input id="pencil_btn" type="radio" name="toolbar" value="draw">
@@ -152,20 +68,12 @@ input[type="radio" i] {
       <i class="fa fa-fw"></i>
     </label>
   </li>
-  <!-- <li class="tool-btn">
-    <input id="scale_btn" type="radio" name="toolbar">
-    <label for="scale_btn">
-      <i class="fa fa-fw fa-text-width"></i>
-    </label>
-  </li>
   <li class="tool-btn">
-    <input id="scale_btn" type="radio" name="toolbar">
-    <label for="scale_btn">
-      <i class="fa fa-fw fa-text-height"></i>
-    </label>
-  </li> -->
+    <input id="paging" type="text" name="paging" value="1" style="width:35px; text-align:center;">
+  </li>
 </ul>
 <div class="paper"></div>
+
 <script type="text/javascript">
 $(function(){
 	$paper = $("div.paper");
@@ -191,6 +99,13 @@ $(function(){
 		width = Number($object.css("width").split("px")[0]);
 		height = Number($object.css("height").split("px")[0]);
 		return {x:x, y:y, width:width, height:height};
+	}
+	function getStyleData($object) {
+		var x = Number($object.css("left").split("px")[0]);
+		var y = Number($object.css("top").split("px")[0]);
+		width = Number($object.css("width").split("px")[0]);
+		height = Number($object.css("height").split("px")[0]);
+		return {left:x, top:y, width:width, height:height};
 	}
 	function mouseInForObject(event) {
 		var x = event.clientX;
@@ -341,7 +256,7 @@ $(function(){
 			var textDatas = [];
 			var background = {};
 			for(i in textObjects) {
-				var styleDatas = getShapeData(textObjects[i]);
+				var styleDatas = getStyleData(textObjects[i]);
 				for(j in styles) styleDatas[styles[j]] = textObjects[i].css(styles[j]);
 				var textData = {};
 				textData.value = textObjects[i].val();
