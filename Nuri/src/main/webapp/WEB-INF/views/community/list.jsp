@@ -106,20 +106,12 @@
                     addEvent('afterTagAdded: ' + eventTags.tagit('tagLabel', ui.tag));
                     console.log(eventTags.tagit('tagLabel', ui.tag));
                     var tagName = eventTags.tagit('tagLabel', ui.tag);
-                    $(tags).each(function() {
-                        if ($(this)[0].name == tagName) {
-                        	console.log($(this)[0].id);
-                    		ajax.get("/api/tag/get/" + $(this)[0].id, {}, function(data) {
-                    			console.log(data);
-                    			var contentTags = data.contentTags;
-                    			$(contentTags).each(function() {
-                    				console.log($(this)[0]);
-                    			});
-	                    	});
-                        } else {
-                        	
-                        }
-                    });
+                    
+            		ajax.get("/community/search?"+$("#tagForm").serialize(), {}, function(data) {
+            			console.log(data);
+            			
+            			$item = $(".item").last().clone();
+            		});
                 }
             },
             beforeTagRemoved: function(evt, ui) {
@@ -143,9 +135,11 @@
 		<div class="col-md-6">
 			<h1>category</h1>
 			<div>
+			<form id="tagForm" name="tagForm" action="/community/search">
              <ul id="eventTags">
                 <li>Add Tag!</li>
             </ul>
+			</form>
 			</div>
  		</div>
 		<div class="col-md-2">
@@ -331,8 +325,40 @@ $(document).ready(function(){
 });
 </script>
 <!-- <div class="row"> -->
-	<c:forEach items="${Contents}" var="content">
-	<div class="item" style="float:left; margin:0px 5px 10px 0px">
+	<div class="item-list">
+		<c:forEach items="${Contents}" var="content">
+		<div class="item" style="float:left; margin:0px 5px 10px 0px">
+			<fmt:formatDate var="date2" value="${content.createdDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+			<div class="row">
+				<div class="col-md-12">
+				<figure class="photoset-item pic">
+					<a href="#" style="width:320px; height:180px; overflow:hidden;"><!-- <img src="holder.js/320x180/sky"> --><img src="${content.thumbnailUrl}" class="thumbnail">
+					<span class="pic-caption bottom-to-top">
+				        <h1 class="pic-title">${content.name}</h1>
+				        <p class="pic-desc">${content.description}</p>
+				    </span>
+				    </a>
+					<!-- <figcaption>A lady walks briskly on a train platform in Bern, Switzerland. Photo © Terry Mun</figcaption> -->
+				</figure>
+				</div>
+			</div>
+			<div class="row" style="min-height:33px; margin: 0px; padding: 1.5px;background:gray; color:#fff">
+				<div class="col-md-5" style="padding:0px;">
+					<img src="holder.js/23x27"><span style="padding-left:5px;">아이디</span>
+				</div>
+				<div class="col-md-7" style="padding:7px 7px 0 9px">
+					<span>0</span>
+					<svg viewBox="0 0 100 100"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-comment"></use></svg>
+					<span class="views">${content.views}</span>
+					<svg viewBox="0 0 100 100"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-eye"></use></svg>
+					<span class="likes">${content.likes}</span>
+					<svg viewBox="0 0 100 100" class="icon-heart"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-heart"></use></svg></span>
+				</div>
+			</div>
+		</div>
+		</c:forEach>
+	</div>
+	<div class="item" style="float:left; margin:0px 5px 10px 0px; display:none">
 		<fmt:formatDate var="date2" value="${content.createdDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 		<div class="row">
 			<div class="col-md-12">
@@ -361,5 +387,4 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
-	</c:forEach>
 <!-- </div> -->

@@ -74,6 +74,10 @@ insert into ContentTag (name, contentId, tagId, createdDate, modifiedDate) value
 insert into ContentTag (name, contentId, tagId, createdDate, modifiedDate) values ('', 1, 3 ,NOW(), NOW());
 insert into ContentTag (name, contentId, tagId, createdDate, modifiedDate) values ('', 2, 3 ,NOW(), NOW());
 insert into ContentTag (name, contentId, tagId, createdDate, modifiedDate) values ('', 3, 3 ,NOW(), NOW());
+insert into ContentTag (name, contentId, tagId, createdDate, modifiedDate) values ('', 11, 3 ,NOW(), NOW());
+insert into ContentTag (name, contentId, tagId, createdDate, modifiedDate) values ('', 12, 3 ,NOW(), NOW());
+insert into ContentTag (name, contentId, tagId, createdDate, modifiedDate) values ('', 13, 3 ,NOW(), NOW());
+insert into ContentTag (name, contentId, tagId, createdDate, modifiedDate) values ('', 14, 3 ,NOW(), NOW());
 
 insert into User(name,password,nickname,email,phone,createdDate, modifiedDate) values('ehnawh','ghksgml','이환희','ehnawh@gmail.com','010-5246-3043',NOW(),NOW());
 insert into User(name,password,nickname,email,phone,createdDate, modifiedDate) values('hsw93','tjddnr','허성욱','hsw93@gmail.com','010-4310-4728 ',NOW(),NOW());

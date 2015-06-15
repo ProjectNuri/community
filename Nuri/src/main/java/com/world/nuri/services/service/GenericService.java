@@ -18,9 +18,10 @@ public abstract class GenericService<T> {
 	protected EntityManager em;
 	
     @SuppressWarnings("unchecked")
-	private final Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	protected
+	final Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
 	private final String table = clazz.getSimpleName();
-	private String SELECT_ALL_SQL = "SELECT * FROM " + this.table;
+	protected String SELECT_ALL_SQL = "SELECT * FROM " + this.table;
 	private String SELECT_COUNT_SQL = "SELECT count(*) FROM " + this.table;
 	
 	@Transactional
