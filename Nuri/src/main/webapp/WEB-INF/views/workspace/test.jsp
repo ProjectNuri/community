@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" session="false"%>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <style type="text/css">
+.container {
+	padding:0px;
+}
 ol, ul {
   list-style: none;
 }
@@ -179,7 +182,7 @@ $(function(){
 	var moveState = 0;
 	var resizeState = 0;
 	var resizeArea = "";
-	var objects = [];
+	var textObjects = [];
 	var $selected = null;
 	var $beforeSelected = null;
 	function getShapeData($object) {
@@ -193,9 +196,9 @@ $(function(){
 		var x = event.clientX;
 		var y = event.clientY;
 		var offset = 3;
-		for(var i in objects) {
-			object = getShapeData(objects[i]);
-			if(object.x-offset <= x && object.y-offset <= y && (object.x + object.width)+offset >= x && (object.y + object.height)+offset >= y) return objects[i];
+		for(var i in textObjects) {
+			object = getShapeData(textObjects[i]);
+			if(object.x-offset <= x && object.y-offset <= y && (object.x + object.width)+offset >= x && (object.y + object.height)+offset >= y) return textObjects[i];
 		}
 		return null;
 	}
@@ -235,7 +238,7 @@ $(function(){
 				} else if($("input[name='toolbar']:checked").val() == "text") {
 					drawState = 1;
 					var $textbox = $("<textarea></textarea>");
-					$textbox.css({position:'absolute', left:startX, top:startY, width:0, height:0, 'font-size':'30pt', border:'2px dashed #000', 'background-color':'rgba( 255, 255, 255, 0)'});
+					$textbox.css({position:'absolute', left:startX, top:startY, width:0, height:0, 'font-size':'30pt', border:'2px dashed #000', 'background-color':'rgba( 255, 255, 255, 0)', overflow:'hidden'});
 					$paper.prepend($textbox);
 					$selected = $textbox;
 				}
@@ -253,13 +256,14 @@ $(function(){
 			
 			if($("input[name='toolbar']:checked").val() == "draw") {
 				ctx.strokeRect(startX,startY,width,height);
-				for(i in objects) {
-					ctx.strokeRect(objects[i].x,objects[i].y,objects[i].width,objects[i].height);				
+				for(i in textObjects) {
+					ctx.strokeRect(textObjects[i].x,textObjects[i].y,textObjects[i].width,textObjects[i].height);				
 				}
 			} else if($("input[name='toolbar']:checked").val() == "text") {
 				$selected.css({width:width, height:height});
 			}
 		} else if(moveState) {
+			
 			if($("input[name='toolbar']:checked").val() == "text") {
 				var offsetX = event.clientX - beforeX;
 				var offsetY = event.clientY - beforeY;
@@ -295,14 +299,14 @@ $(function(){
 				if($("input[name='toolbar']:checked").val() == "draw") {
 					if(width > 0 && height > 0) {
 						var rect = {x:startX,y:startY,width:width,height:height};
-						objects.push(rect);
+						textObjects.push(rect);
 					}
 				} else if($("input[name='toolbar']:checked").val() == "text") {
 					if(width <= 0 && height <= 0) {
-						$selected.css({width:100, height:'17pt'});
+						$selected.css({width:300, height:'37pt'});
 					}
 					$selected.focus();
-					objects.push($selected);
+					textObjects.push($selected);
 					$selected = null;
 				}
 			}
@@ -329,11 +333,51 @@ $(function(){
 			$paper.css({'background-color':'black'});
 		}
 	});
-});
-
-var controls = Object.create(null);
-$(function(){
 	
+	$(document).on("keydown", function(e){
+		if(e.ctrlKey && ( String.fromCharCode(e.which) === 's' || String.fromCharCode(e.which) === 'S')) {
+			console.log('저장합니다.');
+			var styles = ['font-size', 'background-color', 'color', 'overflow', 'position'];
+			var textDatas = [];
+			var background = {};
+			for(i in textObjects) {
+				var styleDatas = getShapeData(textObjects[i]);
+				for(j in styles) styleDatas[styles[j]] = textObjects[i].css(styles[j]);
+				var textData = {};
+				textData.value = textObjects[i].val();
+				textData.style = styleDatas;
+				textDatas.push(textData);
+			}
+			background.color = $paper.css('background-color');
+			background.image = $paper.css('background-image');
+			
+			var works = {background:background, texts:textDatas};
+			var params = {name:"작업물", works:JSON.stringify(works)};
+			
+			$form = $("<form></form>");
+			$form.attr('action', '/api/work');
+			$form.attr('method', 'POST');
+			
+			$input1 = $("<input></input>");
+			$input1.attr('name', 'name');
+			$input1.val(params.name);
+			$form.append($input1);
+			
+			$input2 = $("<input></input>");
+			$input2.attr('name', 'works');
+			$input2.val(params.works);
+			$form.append($input2);
+			
+			ajax.submit($form.get(), function(data){
+				if(data != null) {
+					console.log(data.id);
+					alert('작업물을 저장했습니다');
+				} else {
+					alert('작업물을 저장하는 데 실패하였습니다.');
+				}
+			});
+			e.preventDefault();
+		}
+	});
 });
-
 </script>

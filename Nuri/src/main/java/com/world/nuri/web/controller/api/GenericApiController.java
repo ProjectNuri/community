@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.world.nuri.services.model.abstractModel.GenericModel;
 import com.world.nuri.services.service.GenericService;
 
 public abstract class GenericApiController<T> {
@@ -40,19 +41,20 @@ public abstract class GenericApiController<T> {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "", method = RequestMethod.PUT)
+	@RequestMapping(value = "", method = RequestMethod.POST)
 	public T add(@RequestBody T entity) {
 		return genericService.add(entity);
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public T update(@PathVariable Integer id, @RequestBody T entity) {
+		((GenericModel)entity).setCreatedDate(((GenericModel)genericService.get(id)).getCreatedDate());
 		return genericService.update(entity);
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public Integer delete(@PathVariable Integer id) {
 		return genericService.delete(id);
 	}

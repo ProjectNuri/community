@@ -13,6 +13,7 @@ var ajax = {
     },
     toArrayForUrl:function(urlString) {
     	var data = {};
+    	urlString = urlString.replace(/\+/g, ' ');
     	var keynvalues = urlString.split('&');
     	for(var i in keynvalues) {
     		var keynvalue = keynvalues[i].split('=');
@@ -59,6 +60,7 @@ var ajax = {
             url:url,
             cache:false,
             data:data,
+            contentType:'application/json; charset=utf-8',
             success:cb,
             error:ajax.error
         });
