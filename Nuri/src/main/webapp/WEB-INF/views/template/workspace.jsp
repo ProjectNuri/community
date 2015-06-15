@@ -77,7 +77,7 @@ $( "#other" ).click(function() {
 $(document).ready(function(){
 	$("#floatnav").load("/floatnav");
 	$("#iconSvg").load("/iconSvg");
-	$("body div.container div.inner").load("/workspace/test");
+	$("body div.container div.inner").load("/workspace/view/1");
 });
 </script>
 </body>

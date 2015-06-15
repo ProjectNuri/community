@@ -23,7 +23,7 @@ public abstract class GenericApiController<T> {
 	@Autowired GenericService<T> genericService;
 	
 	@ResponseBody
-	@RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public T get(@PathVariable Integer id) {
 		return genericService.get(id);
 	}
