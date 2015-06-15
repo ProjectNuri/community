@@ -53,6 +53,8 @@ public class CommnunityController {
 	@ResponseBody
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public List<Content> search(@RequestParam() String[] tags
+			, @RequestParam() String[] key_and
+			, @RequestParam() String[] key_or
 			, HttpServletRequest request, Model model) {
 		
 		

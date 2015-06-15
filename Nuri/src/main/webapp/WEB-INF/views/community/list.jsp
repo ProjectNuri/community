@@ -49,9 +49,13 @@
         		if ($target.hasClass("and")) {
         			$target.removeClass("and");
         			$target.addClass("or");
+        			
+        			$target.parent().find("input").attr("name", "key_or");
         		} else {
         			$target.removeClass("or");
         			$target.addClass("and");
+
+        			$target.parent().find("input").attr("name", "key_and");
         		}
     		} else if ($target.hasClass("remove")) {
     			$target.parent().parent().remove();
@@ -165,8 +169,12 @@
 		<div class="col-md-4">
 			<h1>keyword-list</h1>
 			<ul id="search_list" class="list-inline">
-				<li class="search_item"><span class="badge and">프로그래밍<icon class="remove glyphicon glyphicon-remove"></icon></span></li>
-				<li class="search_item"><span class="badge or">게임<icon class="remove glyphicon glyphicon-remove"></icon></span></li>
+				<li class="search_item"><span class="badge and">프로그래밍<icon class="remove glyphicon glyphicon-remove"></icon></span>
+					<input type="hidden" name="key_and" value="프로그래밍" />
+				</li>
+				<li class="search_item"><span class="badge or">게임<icon class="remove glyphicon glyphicon-remove"></icon></span>
+					<input type="hidden" name="key_or" value="게임" />
+				</li>
 				<li class=""><span>빨간색은 and 키워드, 초록색은 or 키워드 / 클릭하면 색 바뀜. 드래그해서 순서 바꿈 가능</span></li>
 			</ul>
 		</div>
