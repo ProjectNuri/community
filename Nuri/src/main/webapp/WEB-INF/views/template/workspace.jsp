@@ -33,7 +33,7 @@ $(document).keydown(function(event){
 	console.log(event.which);
 });
 $(document).mousedown(function(event){
-	//console.log(event.which);
+	console.log(event.which);
 });
 /* $(window).on('beforeunload',function(){
 	console.log('beforeunload');
