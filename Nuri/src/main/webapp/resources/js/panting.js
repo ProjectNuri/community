@@ -101,6 +101,7 @@ function loadImageURL(cx, url)  {
 }
 
 // used by tools.Spray
+
 // randomly positions dots
 function randomPointInRadius(radius) {
   for (;;) {
