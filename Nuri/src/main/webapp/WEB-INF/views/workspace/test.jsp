@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" trimDirectiveWhitespaces="true" session="false"%>
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <ul class="tools">
-  <li class="tool-btn">
+  <!-- <li class="tool-btn">
     <input id="pencil_btn" type="radio" name="toolbar" value="draw">
     <label for="pencil_btn">
       <i class="fa fa-fw fa-pencil"></i>
     </label>
-  </li>
-  <li class="tool-btn">
+  </li> -->
+  <!-- <li class="tool-btn">
     <input id="paint_btn" type="radio" name="toolbar" value="paint">
     <label for="paint_btn">
       <i class="fa fa-fw fa-paint-brush"></i>
@@ -18,9 +18,9 @@
     <label for="erase_btn">
       <i class="fa fa-fw fa-eraser"></i>
     </label>
-  </li>
-  <li class="separator"></li>
-  <li class="tool-btn">
+  </li> -->
+  <!-- <li class="separator"></li> -->
+  <!-- <li class="tool-btn">
     <input id="move_btn" type="radio" name="toolbar" value="move">
     <label for="move_btn">
       <i class="fa fa-fw fa-arrows"></i>
@@ -31,7 +31,7 @@
     <label for="scale_btn">
       <i class="fa fa-fw fa-expand"></i>
     </label>
-  </li>
+  </li> -->
   <li class="tool-btn">
     <input id="font_btn" type="radio" name="toolbar" value="text">
     <label for="font_btn">
@@ -82,6 +82,8 @@ $(function(){
 	var ctx = $canvas.get(0).getContext('2d');	
 	$paper.append($canvas);
 	
+	var id = null;
+	var name = "";
 	var startX = -1;
 	var startY = -1;
 	var beforeX = -1;
@@ -265,13 +267,13 @@ $(function(){
 			}
 			background.color = $paper.css('background-color');
 			background.image = $paper.css('background-image');
-			
+
+			name = prompt('제목을 입력하세요.', name);
 			var works = {background:background, texts:textDatas};
-			var params = {name:"작업물", works:JSON.stringify(works)};
+			var params = {name:name, works:JSON.stringify(works)};
 			
 			$form = $("<form></form>");
 			$form.attr('action', '/api/work');
-			$form.attr('method', 'POST');
 			
 			$input1 = $("<input></input>");
 			$input1.attr('name', 'name');
@@ -283,9 +285,18 @@ $(function(){
 			$input2.val(params.works);
 			$form.append($input2);
 			
+			if(id == null) {
+				$form.attr('method', 'POST');	//추가
+			} else {
+				$form.attr('method', 'PUT');	//수정
+				$input3 = $("<input></input>");
+				$input3.attr('name', 'id');
+				$input3.val(id);
+			}
 			ajax.submit($form.get(), function(data){
 				if(data != null) {
-					console.log(data.id);
+					id = data.id;
+					//console.log(data.id);
 					alert('작업물을 저장했습니다');
 				} else {
 					alert('작업물을 저장하는 데 실패하였습니다.');

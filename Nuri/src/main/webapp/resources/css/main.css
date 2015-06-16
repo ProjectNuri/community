@@ -81,3 +81,7 @@ body {
 table tr, table th {
 	text-align: center;
 }
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+}

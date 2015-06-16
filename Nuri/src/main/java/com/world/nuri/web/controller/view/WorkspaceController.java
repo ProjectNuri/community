@@ -38,8 +38,15 @@ public class WorkspaceController {
 		return "workspace/test";
 	}
 	
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public String testview2(@PathVariable Integer id, HttpServletRequest request, Model model) {
+		model.addAttribute("id", id);
+		return "template/workspace2";
+	}
+	
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
 	public String testview(@PathVariable Integer id, HttpServletRequest request, Model model) {
+		model.addAttribute("id", id);
 		return "workspace/view";
 	}
 }

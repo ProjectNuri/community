@@ -4,7 +4,7 @@
 $(function() {
 	var name = "";
 	var works;
-	ajax.get("/api/work/1", {}, function(data) {
+	ajax.get("/api/work/${id}", {}, function(data) {
 		console.log(data);
 		name = data.name;
 		works = JSON.parse(data.works);

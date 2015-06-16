@@ -11,7 +11,7 @@
 	</a>
 	<h1 class="navHeading navChild">누리</h1>
 	<hr class="navDivider navChild">
-	<a href="#" class="navChild navLink">로그인/회원가입<span class="navLink_flourish"></span></a>
+	<!-- <a href="#" class="navChild navLink">로그인/회원가입<span class="navLink_flourish"></span></a> -->
 	<a href="/" class="navChild navLink">메인<span class="navLink_flourish"></span></a>
 	<h1 class="navHeading navChild">커뮤니티</h1>
 	<hr class="navDivider navChild">
